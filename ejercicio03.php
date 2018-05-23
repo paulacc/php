@@ -64,12 +64,21 @@
      echo "Ejercicio 6";
      echo "<hr>";
 
-     $n = rand(0,1);
-     while($n == 1){
-       echo "$n <br>";
-       $n++;
 
-     }
+      $cara = 0;
+      $tiros = 0;
+
+      while($cara < 5){
+        $moneda= rand(0,1);
+        if($moneda == 1){
+          $cara++;
+        }
+         $tiros++;
+      }
+      echo "En $tiros tiros, salio $cara veces caras";
+    echo "<br>";
+     echo "<br>";
+
 
      echo "<hr>";
      echo "Ejercicio 7";
@@ -159,6 +168,80 @@
      }
 
 
+
+           echo "<hr>";
+           echo "Ejercicio 14";
+           echo "<hr>";
+
+     $ceuA = [
+
+      	"Argentina"	=> ["Buenos Aires", "Córdoba", "Santa Fé"],
+
+      	"Brasil" => ["Brasilia", "Rio de Janeiro", "Sao Pablo"],
+
+      	"Colombia" => ["Cartagena", "Bogota", "Barranquilla"],
+
+      	"Francia" => ["Paris", "Nantes", "Lyon"],
+
+      	"Italia" => ["Roma", "Milan", "Venecia"],
+
+      	"Alemania" => ["Munich", "Berlin", "Frankfurt"]
+
+    ];
+
+        foreach ($ceuA as $pais => $ciudades) {
+
+           echo "Las ciudades de $pais:";
+           echo "<br>";
+           foreach ($ciudades as $ciudad) {
+              echo "<li>$ciudad</li>";
+           }
+
+        }
+         // la key de ciudades es la posicion;
+
+
+
+                    echo "<hr>";
+                    echo "Ejercicio 15";
+                    echo "<hr>";
+         $ceuB = [
+         	"Argentina"	=> [
+                 'ciudades' =>["Buenos Aires", "Córdoba", "Santa Fé"],
+                 'esAmericano' => true,
+             ],
+         	"Brasil" => [
+                 'ciudades' => ["Brasilia", "Rio de Janeiro", "Sao Pablo"],
+                 'esAmericano' => true,
+             ],
+         	"Colombia" => [
+                 'ciudades'=>["Cartagena", "Bogota", "Barranquilla"],
+                 'esAmericano' => true,
+             ],
+         	"Francia" => [
+                 'ciudades' => ["Paris", "Nantes", "Lyon"],
+                 'esAmericano' => false,
+             ],
+         	"Italia" => [
+                 'ciudades' => ["Roma", "Milan", "Venecia"],
+                 'esAmericano' => false,
+             ],
+         	"Alemania" => [
+                 'ciudades' => ["Munich", "Berlin", "Frankfurt"],
+                 'esAmericano' => false,
+             ]
+         ];
+
+
+
+
+      //la key es el pais que es
+      //el value es todo lo ademas
+
+      foreach ($ceuB as $paises => $value){
+         echo $paises;
+
+      }
 
 
 
