@@ -9,6 +9,14 @@
 
   }*/
 
+
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE);
+
+
+
+
   echo "<hr>";
   echo "Ejercicio 1/2";
   echo "<hr>";
@@ -136,8 +144,6 @@
      automatizacion
 
       */
-
-
       echo "<hr>";
       echo "Ejercicio 9";
       echo "<hr>";
@@ -167,8 +173,6 @@
 
      }
 
-
-
            echo "<hr>";
            echo "Ejercicio 14";
            echo "<hr>";
@@ -191,7 +195,7 @@
 
         foreach ($ceuA as $pais => $ciudades) {
 
-           echo "Las ciudades de $pais:";
+           echo "Las ciudades de $pais";
            echo "<br>";
            foreach ($ciudades as $ciudad) {
               echo "<li>$ciudad</li>";
@@ -201,10 +205,6 @@
          // la key de ciudades es la posicion;
 
 
-
-                    echo "<hr>";
-                    echo "Ejercicio 15";
-                    echo "<hr>";
          $ceuB = [
          	"Argentina"	=> [
                  'ciudades' =>["Buenos Aires", "Córdoba", "Santa Fé"],
@@ -232,20 +232,78 @@
              ]
          ];
 
-
-
-
       //la key es el pais que es
       //el value es todo lo ademas
+      echo "<hr>";
+      echo "Ejercicio 15 es americano";
+      echo "<hr>";
 
-      foreach ($ceuB as $paises => $value){
-         echo $paises;
+              foreach ($ceuB as $pais => $cidade) {
 
-      }
+                  echo "Las ciudades de $pais";
+                echo "<br>";
+
+                foreach ($cidade as $detalle => $valor) {
+                         echo $detalle;
+                          echo "<br>";
+                  }
+
+
+
+                }
 
 
 
 
 
+                /*  $array = [1,2,3,4,5];
+
+                   foreach ($array as $value) {
+                     echo $value;
+
+                   }
+*/
+         echo "<br>";
+
+
+         echo "<hr>";
+         echo "Ejercicio alimentos";
+         echo "<hr>";
+
+
+        $alimentos = [
+           "fruta" => [
+                'tropical' => ["kiwi","melon"],
+                'citrico' => ["mandarina","pomelo"],
+           ],
+           "verduras" =>[
+              'hortalizas' => ["zanahoria","puerro"],
+              'de hoja' => ["lechuga","acelga"],
+
+           ],
+           "carne" => [
+               'vacuno' => ["lomo","cuadrada"],
+               'cerdo' => ["carre", "chuleta"],
+           ]
+        ];
+
+          foreach ($alimentos as $clave_ali => $ali) {
+                    echo " tipo de alimento $clave_ali <br>";
+                    echo "<br>";
+
+                    foreach ($ali as $detalle => $masdetalle) {
+                      echo  "<li> tipo de $detalle</li>";
+                      echo "<br>";
+                    }
+
+                    foreach ($masdetalle as $tipo ) {
+
+                      echo "<strong> $tipo</strong>";
+                      echo "<br>";
+                        echo "<br>";
+                    }
+
+
+          }
 
  ?>
