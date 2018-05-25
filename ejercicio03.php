@@ -207,7 +207,7 @@ ini_set('display_startup_errors', TRUE);
 
          $ceuB = [
          	"Argentina"	=> [
-                 'ciudades' =>["Buenos Aires", "Córdoba", "Santa Fé"],
+                 'ciudades' => ["Buenos Aires", "Córdoba", "Santa Fé"],
                  'esAmericano' => true,
              ],
          	"Brasil" => [
@@ -238,19 +238,17 @@ ini_set('display_startup_errors', TRUE);
       echo "Ejercicio 15 es americano";
       echo "<hr>";
 
+      echo '<pre>';
+      // var_dump($ceuB);
+
               foreach ($ceuB as $pais => $cidade) {
-
-                  echo "Las ciudades de $pais";
-                echo "<br>";
-
-                foreach ($cidade as $detalle => $valor) {
-                         echo $detalle;
-                          echo "<br>";
-                  }
-
-
+                if ($cidade['esAmericano'] == true) {
+                   echo $pais;
+                   echo "<br>";
+                }
 
                 }
+
 
 
 
@@ -263,47 +261,45 @@ ini_set('display_startup_errors', TRUE);
 
                    }
 */
-         echo "<br>";
+        //  echo "<br>";
+        //
+        //
+        //  echo "<hr>";
+        //  echo "Ejercicio alimentos";
+        //  echo "<hr>";
+        //
+        //
+        // $alimentos = [
+        //    "fruta" => [
+        //         'tropical' => ["kiwi","melon"],
+        //         'citrico' => ["mandarina","pomelo"],
+        //    ],
+        //    "verduras" =>[
+        //       'hortalizas' => ["zanahoria","puerro"],
+        //       'de hoja' => ["lechuga","acelga"],
+        //
+        //    ],
+        //    "carne" => [
+        //        'vacuno' => ["lomo","cuadrada"],
+        //        'cerdo' => ["carre", "chuleta"],
+        //    ]
+        // ];
+        //
+        //
+        //   foreach ($alimentos as $clave_ali => $ali) {
+        //             echo " tipo de alimento $clave_ali <br>";
+        //             echo "<br>";
+        //
+        //             foreach ($variable as $key => $value) {
+        //
+        //             }
+        //
+        //   }
 
 
-         echo "<hr>";
-         echo "Ejercicio alimentos";
-         echo "<hr>";
 
 
-        $alimentos = [
-           "fruta" => [
-                'tropical' => ["kiwi","melon"],
-                'citrico' => ["mandarina","pomelo"],
-           ],
-           "verduras" =>[
-              'hortalizas' => ["zanahoria","puerro"],
-              'de hoja' => ["lechuga","acelga"],
-
-           ],
-           "carne" => [
-               'vacuno' => ["lomo","cuadrada"],
-               'cerdo' => ["carre", "chuleta"],
-           ]
-        ];
-
-          foreach ($alimentos as $clave_ali => $ali) {
-                    echo " tipo de alimento $clave_ali <br>";
-                    echo "<br>";
-
-                    foreach ($ali as $detalle => $masdetalle) {
-                      echo  "<li> tipo de $detalle</li>";
-                      echo "<br>";
-                    }
-
-                    foreach ($masdetalle as $tipo ) {
-
-                      echo "<strong> $tipo</strong>";
-                      echo "<br>";
-                        echo "<br>";
-                    }
 
 
-          }
 
  ?>
