@@ -1,6 +1,8 @@
 
     <?php
+
       function triangulo ($base,$altura){
+
         return ($base * $altura) /2;
       }
 
@@ -26,7 +28,10 @@
         echo cuadrado (6);
         echo "<br>";
 
+
        function circulo($radio){
+        global $funcionesEjecutadas;
+        $funcionesEjecutadas++;
         $pi = 3.14;
         return ($radio*$radio)*$pi;
 
