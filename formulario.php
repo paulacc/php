@@ -34,11 +34,33 @@
             <br>
 
               <label for="genero"> Genero</label>
+              <br>
               <input type="radio" name="gender" value="masculino"> Masculino<br>
               <input type="radio" name="gender" value="femenino"> Femenino<br>
               <input type="radio" name="gender" value="otro"> Otro <br>
 
-            <button type="submit">Dale caña</button>
+
+            <br>
+            <label for="pregunta"> ¿Cómo dormiste anoche?</label>
+            <br>
+            <br>
+            <select name="select">
+                  <option value="value1"> 1</option>
+                  <option value="value2" > 2</option>
+                  <option value="value3"> 3</option>
+                  <option value="value4"> 4</option>
+                  <option value="value5" > 5</option>
+                  <option value="value6"> 6</option>
+                  <option value="value7"> 7</option>
+                  <option value="value8" > 8</option>
+                  <option value="value9"> 9</option>
+                  <option value="value10"> 10</option>
+
+            </select>
+             <br>
+
+            <hr>
+                          <button type="submit">Dale caña</button>
 
             </form>
 

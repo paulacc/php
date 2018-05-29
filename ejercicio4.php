@@ -5,7 +5,7 @@ function sumar($num1,$num2){
 
 }
  echo sumar(82,15);
-  echo "<br>";
+echo "<br>";
 
 
 function saludar($nombre,$apellido){

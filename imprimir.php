@@ -6,12 +6,20 @@
   </head>
   <body>
     <?php
-       var_dump($_POST['nombre']);
+       var_dump($_POST['email']);
        foreach ($_POST as $key => $value) {
          echo "$value <br>";
 
        }
 
+       $headers =  getallheaders();
+          foreach($headers as $key=>$val){
+          echo $key . ': ' . $val . '<br>';
+        }
+
+        echo "<br>";
+        echo "<hr>";
+        var_dump($_SERVER);
      ?>
   </body>
 </html>
