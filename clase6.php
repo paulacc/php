@@ -1,6 +1,6 @@
 <?php
 $titulo = 'Tutorial PHP';
-$paises = ["Chile","Argentina","Mexico","Colombia","Venezuela","Peru","Ecuador"]
+$paises = ["Chile","Argentina","Mexico","Colombia","Venezuela","Peru","Ecuador","Brasil","Bolivia","Uruguay"];
 
 
  ?>
