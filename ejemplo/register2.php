@@ -1,5 +1,6 @@
 <?php
     // Países
+	 $paises = ['Argentina', 'Brasil', 'Colombia', 'Chile', 'Ecuador', 'Paraguay', 'Perú', 'Uruguay', 'Venezuela' ];
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,7 +43,7 @@
 	 </style>
 </head>
 <body>
-   <form method='post'>
+   <form method='post' action="confirmacion_2.php">
       <fieldset >
 			<legend>Registrate</legend>
 
@@ -67,18 +68,23 @@
 				<label for='password'>Contraseña*:</label>
 				<input type='password' name='password' id='password'>
 			</div>
-      <div class='form-control'>
-        <label for="passwd">comprobar contraseña*</label>
-        <input type="password" name="passwd" id="passwd">
-      </div>
-      <div class="form-control">
-        <label for="numero">telefono de contacto*</label>
-        <input type="texto" name="numero" id="numero">
-      </div>
-      <div class="form-control">
-        <label for="direccion">direccion de dominicilio*</label>
-        <input type="text" name="direccion" id="direccion">
-      </div>
+
+			<div class='form-control'>
+				<label>País*:</label>
+				<select name="country">
+					<option value="">Seleccioná</option>
+					<?php foreach ($paises as $pais):?>
+             		<option value="<?=$pais?>"><?=$pais?></option>
+           		<?php endforeach; ?>
+				</select>
+			</div>
+
+			<div class='form-control'>
+				<label>Pasatiempos*:</label>
+				<label><input type="checkbox" name="hobbies[]" value="Leer"> Leer</label>
+				<label><input type="checkbox" name="hobbies[]" value="Pasear"> Pasear</label>
+				<label><input type="checkbox" name="hobbies[]" value="Codear"> Codear</label>
+			</div>
 
 			<div class='form-control'>
 				<button type="submit">ENVIAR</button>
