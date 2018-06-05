@@ -31,12 +31,20 @@ echo "<hr>";
   $deJSONaArray = json_decode($miArrayJason,true);
   echo $deJSONaArray;
   echo "<br>";
+
+
   echo "<hr>";
 
 
-  foreach ($deJSONaArray as $value) {
-    echo  $value;
+   echo  $deJSONaArray['c'];
+   echo  $deJSONaArray['a'];
+   echo  $deJSONaArray['b'];
 
-  }
+
+  echo "<hr>";
+
+
+
+
 
  ?>
