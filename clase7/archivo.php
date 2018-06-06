@@ -2,7 +2,6 @@
 
 //Agregando archivos verificando si existe o no archivo
 
-
 $fp = fopen('prueba.txt','w');
 fclose($fp);
 
@@ -20,7 +19,6 @@ if(file_exists($txt)){
 }
 
 
-
 $fp = fopen($txt, "r");
 $contenido =  fread($fp, filesize($txt));
 echo $contenido . "<br/>";
@@ -30,6 +28,20 @@ fclose($fp);
 echo "<hr>";
 
 $categorias = file_get_contents('categorias.json');
-$categoriasArrayJSON = explode(PHP_EOL,$categorias);
+$categoriasArrayJson = explode(PHP_EOL,$categorias);
+$categoriasPHP = [];
+ foreach ($categoriasArrayJson as  $value) {
+         $categoriasPHP [] = json_decode($value,true);
+ }
+var_dump($categoriasPHP);
+
+
+
+
+
+
+
+
+
 
  ?>

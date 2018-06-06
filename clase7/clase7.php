@@ -29,7 +29,7 @@ echo "<hr>";
   echo $miArrayJason;
   echo "<br>";
   $deJSONaArray = json_decode($miArrayJason,true);
-  echo $deJSONaArray;
+
   echo "<br>";
 
 
