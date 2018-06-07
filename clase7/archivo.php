@@ -27,21 +27,20 @@ fclose($fp);
 
 echo "<hr>";
 
+
+
+
 $categorias = file_get_contents('categorias.json');
 $categoriasArrayJson = explode(PHP_EOL,$categorias);
 $categoriasPHP = [];
- foreach ($categoriasArrayJson as  $value) {
-         $categoriasPHP [] = json_decode($value,true);
- }
-var_dump($categoriasPHP);
+
+foreach ($categoriasArrayJson as $categoria) {
+   $categoriasPHP [] = json_decode($categoria,true);
+
+   var_dump($categoriasPHP);
 
 
-
-
-
-
-
-
+}
 
 
  ?>
