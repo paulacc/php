@@ -94,6 +94,8 @@
 					</div>
 				</div>
 
+
+
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="form-group <?= isset($errores['pais']) ? 'has-error' : null ?>">
@@ -110,8 +112,19 @@
                    <?php endforeach; ?>
                                </select>
 		                </div>
-					</div>
+										<div class="col-xs-6">
+											<div class="form-group <?= isset($errores['avatar']) ? 'has-error' : null ?>">
+												<label for="name" class="control-label">Subir imagen:</label>
+												<input class="form-control" type="file" name="avatar" value="<?= isset($_FILES['avatar']) ? $_FILES['avatar']['name'] : null ?>">
+												<span class="help-block" style="<?= !isset($errores['avatar']) ? 'display: none;' : '' ; ?>">
+													<b class="glyphicon glyphicon-exclamation-sign"></b>
+													<?= isset($errores['avatar']) ? $errores['avatar'] : '' ;?>
+												</span>
+											</div>
+					       </div>
 				</div>
+
+
 
             <button class="btn btn-primary" type="submit">Enviar</button>
         </form>
