@@ -63,7 +63,6 @@ function traerTodos(){
     foreach ($usuariosArrayJSON as $value) {
         $usuariosPHP[] = json_decode($value, true);
     }
-
     // Saco el último elemento que es una línea vacia
     array_pop($usuariosPHP);
 
