@@ -85,7 +85,7 @@ if ($_POST) {
 					  <label class="control-label">País:</label>
                       <select class="form-control" class="" name="pais">
                       <option value="">Elegi País</option>
-						<?php foreach ($paises as $value): ?>
+					   	<?php foreach ($paises as $value): ?>
                                 <?php if ($value == $pais): ?>
                                     <option selected value="<?=$value?>"><?=$value?></option>
                                 <?php else: ?>
