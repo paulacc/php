@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>MySchool-Login</title>
+
+    <style media="screen">
+      .cuerpo {
+        background-color:#73A098;
+        color: #2E334B;
+        font-family: 'Roboto', sans-serif;
+        }
+
+      .boton{
+        background-color: #2E334B;
+        }
+
+    </style>
+  </head>
+
+  <?php
+    require_once('header.html');
+  ?>
+
+  <body class="cuerpo">
+    <div class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center text-white mb-4"></h2>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+
+                    <!-- form card login -->
+                    <div class="card rounded-0">
+                        <div class="card-header">
+                            <h3 class="mb-0">Iniciar Sesión</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="form">
+                                <div class="form-group">
+                                    <label for="uname1">Usuario</label>
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="uname1" id="uname1" required="">
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Contraseña</label>
+                                    <input type="password" class="form-control form-control-lg rounded-0" id="pwd1" required="" autocomplete="new-password">
+
+                                </div>
+                                <div>
+                                    <label class="custom-control custom-checkbox">
+                                      <input type="checkbox" class="custom-control-input">
+                                      <span class="custom-control-indicator"></span>
+                                    <a href="#">  <span class="custom-control-description small text-dark">¿Olvidaste tu contraseña?</span></a>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary boton float-right ">Iniciar Sesión</button>
+                            </form>
+                        </div>
+                        <!--/card-block-->
+                    </div>
+                    <!-- /form card login -->
+
+                </div>
+
+
+            </div>
+            <!--/row-->
+
+        </div>
+        <!--/col-->
+    </div>
+    <!--/row-->
+</div>
+  </body>
+
+  <?php
+    require_once('footer.html');
+  ?>
+
+</html>
