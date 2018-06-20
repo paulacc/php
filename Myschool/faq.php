@@ -24,11 +24,9 @@
 				<div class="card">
 			    <div class="card-header">
 			      <h4 class="mb-0">
-			        <a data-toggle="collapse" role="button" data-parent="#accordion" href="#collapse1">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
 								1. ¿Qué es el Chat de Padres?
 							</a>
-
-
 			      </h4>
 			    </div>
 			    <div id="collapse1" class="panel-collapse collapse in">
@@ -41,12 +39,12 @@
 				<div class="card">
 			    <div class="card-header">
 			      <h4 class="mb-0">
-			        <a data-toggle="collapse"  data-parent="#accordion" href="#collapse2">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
 								2. ¿Quién administra el Chat de Padres?
 							</a>
 			      </h4>
 			    </div>
-			    <div id="collapse2" class="panel-collapse collapse ">
+			    <div id="collapse2" class="panel-collapse collapse">
 			      <div class="card-body">
 							El Chat de Padres se auto administra, sin embargo, el grupo deberá elegir un administrador para que crear el grupo y enviar las invitaciones a unirse.
 						</div>

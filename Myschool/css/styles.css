@@ -23,16 +23,16 @@ a {
   width: device-width;
 }
 
-ul, ol {
+ul, ol, li {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.main-header { /*contiene el logo y la hamburguesa*/
+.main-header { /*contiene el logo, la hamburguesa y el menu*/
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   background-color: white;
   padding: 0;
@@ -64,11 +64,12 @@ ul, ol {
   font-size: 60px;
 }
 
-.main-nav1 {
+/*contiene los botones del menu*/
+.botones-navegacion {
   width: 100%;
 }
 
-.main-nav1 .nav1 {
+.botones-navegacion .nav1 {
   display: block;
   background-color: rgb(255, 153, 0);
   border-top: solid 1px #fff;
@@ -80,40 +81,73 @@ ul, ol {
   padding: 10px;
 }
 
-
-img {
-  width: 80%;
+/*estilos footer*/
+.main-footer .row .col-sm-8 {
+  /*border:solid green;*/
+}
+.logo-footer {
+  width: 100%;
 }
 
-/*.container {
-  width: 100%;
-  padding-right: 0;
-  padding-left: 0;
-  margin-right: auto;
-  margin-left: auto;
-}*/
+.main-footer .row .col-sm-4 {
+    /*border:solid red;*/
+    vertical-align: middle;
+    background-color: rgb(255, 153, 0);
+    color: #fff;
+    text-align: center;
+    font-size: 1.2em;
+}
+.main-footer .row .col-sm-4 ul {
+  vertical-align: middle;
+}
+.main-footer a {
+  text-decoration: none;
+  color: #fff;
+}
+
+
 
 
 @media (min-width: 576px) {
-  .container {
-    max-width: 540px;
+  .logo {
+    width: 80%;
   }
 }
 
 @media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
 }
 
 @media (min-width: 992px) {
-  .container {
-    max-width: 960px;
+  .toggle-nav {
+    display: none;
   }
+  .botones-navegacion {
+    background-color: red;
+  }
+  .botones-navegacion ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .botones-navegacion ul li {
+    width: 25%;
+    border-left: solid white;
+    border-right: solid white;
+  }
+  .botones-navegacion ul li .nav1 {
+    height: 100%;
+    border-top: none;
+  }
+  .main-footer .row .col-sm-4 {
+    font-size: 1.5em;
+  }
+
 }
 
 @media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
+  .logo {
+    width: 60%;
+  }
+  .main-footer .row .col-sm-4 {
+    font-size: 2em;
   }
 }
