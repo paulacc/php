@@ -1,11 +1,10 @@
 <?php
   require_once('funciones.php');
 
-<<<<<<< HEAD
  var_dump(traerTodos());
-=======
+
   $usuarios = traerTodos();
->>>>>>> 84074db410e92ea0904807c131a40b08122b0b09
+  
  ?>
  <!DOCTYPE html>
  <html>

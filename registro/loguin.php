@@ -18,7 +18,7 @@ if($_POST){
     <title></title>
   </head>
   <body>
-    <form class="" method="post">
+    <form class="" method="post" action="mostrar.php">
        <label for="">Usuario</label>
        <input type="text" name="usuario" value="">
        <br>

@@ -1,0 +1,30 @@
+
+
+Instanciar objeto
+$Autodeleo = new Coche();
+$Autodeleo-> marca = "citroen";
+
+class Coche
+{
+//definicion de atributo
+ public $marca;
+ public $patente;
+ public $kilometraje;
+
+ public function getMarca(){
+    return this $marca
+ }
+
+}
+
+
+Los contructores es un fragmento de codigo se ejecuta automaticamente
+puede recibir parametros
+
+
+
+public_function__contruct($MarcaInicial){
+
+ $this->marca = $MarcaInicial;
+
+}
