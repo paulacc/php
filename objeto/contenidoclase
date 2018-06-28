@@ -28,3 +28,11 @@ public_function__contruct($MarcaInicial){
  $this->marca = $MarcaInicial;
 
 }
+
+
+herencia
+class Auto extends Vehiculo
+
+la sub clase Auto hereda de la clase Vehiculo, tiene alguna cuestion propio
+sobreescribo las funciones que quiero cambiar
+ 
