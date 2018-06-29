@@ -1,5 +1,5 @@
 <?php
-
+//requiere de todo el resto de las clases
 class productoVendible
 
  {
@@ -41,25 +41,17 @@ class productoVendible
 }
 
 
-  class Sandwich extends ProductoVendible {
-  private  $mayonesa;
-  private $tostado;
-
-  public function Preparar(){
-
-  }
 
 
 
-}
 
-class Ensalda extends ProductoVendible {
+//class Ensalda extends ProductoVendible {
 
-}
+//}
 
-class Bebida extends ProductoVendible {
+//class Bebida extends ProductoVendible {
 
-}
+//}
 
 
 
