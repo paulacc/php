@@ -1,0 +1,14 @@
+SELECT * FROM movies WHERE release_date < '2000-01-01' or release_date > '2009-01-01' and id>10 
+
+//SELECT * FROM actors ORDER BY first_name, last_name ASC 
+
+SELECT * FROM movies ORDER BY release_date ASC 
+
+SELECT * FROM movies WHERE release_date > '2000-01-01' ORDER BY title
+
+SELECT * FROM movies LIMIT 5 
+
+SELECT * FROM movies WHERE release_date >'2001-01-01' LIMIT 3 
+
+SELECT * FROM movies WHERE release_date >'2001-01-01' ORDER BY title LIMIT 3 
+
