@@ -1,14 +1,36 @@
-SELECT * FROM movies WHERE release_date < '2000-01-01' or release_date > '2009-01-01' and id>10 
+SELECT * FROM movies WHERE release_date < '2000-01-01' or release_date > '2009-01-01' and id>10
 
-//SELECT * FROM actors ORDER BY first_name, last_name ASC 
+//SELECT * FROM actors ORDER BY first_name, last_name ASC
 
-SELECT * FROM movies ORDER BY release_date ASC 
+SELECT * FROM movies ORDER BY release_date ASC
 
 SELECT * FROM movies WHERE release_date > '2000-01-01' ORDER BY title
 
-SELECT * FROM movies LIMIT 5 
+SELECT * FROM movies LIMIT 5
 
-SELECT * FROM movies WHERE release_date >'2001-01-01' LIMIT 3 
+SELECT * FROM movies WHERE release_date >'2001-01-01' LIMIT 3
 
-SELECT * FROM movies WHERE release_date >'2001-01-01' ORDER BY title LIMIT 3 
+SELECT * FROM movies WHERE release_date >'2001-01-01' ORDER BY title LIMIT 3
 
+SELECT *FROM  movies ORDER by ID DESC LIMIT 1
+
+select * from movies where awards in(1,2,7);
+select * from movies where genre_id  in (select id from genres where ranking >5 and ranking<8)
+select sum(awards)from movies;
+//suma
+select sum(awards)from movies where rating>8
+insert into movies(title,rating,awards,release_date) values ('Indiana Jones',9,5,'1980-01-13');
+
+update movies set awards=8  where rating>9
+
+Clase2 ejercicios Haciendo
+SELECT * FROM  movies WHERE release_date between '1999-10-01' and '2004-12-01'
+SELECT first_name from actors where first_name between 'HE' and 'TO'
+SELECT * FROM movies where title like 'T%'
+
+SELECT title from movies where title like 'T%'  and title like '%C'
+
+SELECT * from movies where title like 'T%' and  title like '%C'
+
+SELECT * from movies where release_date between '2000-01-01' and '2000-12-31' order by title
+SELECT * from movies where title like '%-%'

@@ -1,0 +1,18 @@
+
+Clase contenido esto es para contar cantidad de movies
+select count(*) from movies
+
+select sum(rating) from movies group by awards
+
+select sum(rating),awards from movies group by awards
+la suma del rating ordenada por premios awards
+select sum(rating),awards from movies where rating>6 group by awards
+
+
+select movies.title, genres.name,movies.awards from movies inner join genres on movies.genre_id=genres.id
+
+
+select movies.title, genres.name,movies.awards from movies inner join genres on movies.genre_id=genres.id
+inner join es la que trae la combinacion unicamente que tenga esa combinacion
+si pongo leftjoin te trae aunque no se cumpla esa combinacion dejar un null, ejemplo
+trae todos los titulos tengan o no genero , y el rigth trae todos los generos indenpendiente de los titulos
