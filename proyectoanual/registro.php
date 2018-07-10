@@ -31,6 +31,13 @@ if($_POST){
   $direccion = trim($_POST['direccion']);
   $email = trim($_POST['email']);
 
+          $errores = validar($_POST);
+
+          if (empty($errores)) {
+            //empty se usa para saber si variable esta vacia
+            //isset determina si es null
+            
+            $user = guardarUser($_POST);
 
 
 }
@@ -87,11 +94,11 @@ if($_POST){
 
        <div class="form-group col-md-4">
          <label for="inputNombre">Nombre</label>
-         <input type="email" class="form-control" name="nombre" placeholder="Email">
+         <input type="text" class="form-control" name="nombre" placeholder="Nombre">
        </div>
        <div class="form-group col-md-4">
          <label for="inputPassword4">Apellido</label>
-         <input type="password" class="form-control" name="apellido" placeholder="Apellido">
+         <input type="text" class="form-control" name="apellido" placeholder="Apellido">
        </div>
 
       <div class="form-row d-flex justify-content-center ">
@@ -103,12 +110,12 @@ if($_POST){
 
         <div class="form-group col-md-5">
           <label for="inputtelfono">Telefono</label>
-          <input type="email" class="form-control" name="telefono"  placeholder="Telefono">
+          <input type="numero" class="form-control" name="telefono"  placeholder="Telefono">
         </div>
 
         <div class="form-group col-md-3">
-          <label for="inputtelfono">Codigo de Area</label>
-          <input type="email" class="form-control" name="codigo"  placeholder="Cod Area">
+          <label for="inputCodigo">Codigo de Area</label>
+          <input type="numero" class="form-control" name="codigo"  placeholder="Cod Area">
         </div>
       </div>
         <div class="form-row d-flex justify-content-center">
@@ -118,30 +125,18 @@ if($_POST){
              <input type="text" class="form-control" name="direccion"  placeholder="Direccion">
            </div>
 
-           <div class="form-group col-md-4">
+
+           <div class="form-group col-md-4" <?= isset($errores['provincias']) ? 'has-error' : null ?>>
              <label for="Select1">Provincia</label>
-             <select class="custom-select" name="colegio">
-               <option value="">Buenos Aires</option>
-               <option value=""> Catamarca</option>
-               <option value="">Chaco</option>
-              <option value="">Chubut</option>
-              <option value="">Corrientes</option>
-              <option value="">Entre Ríos</option>
-              <option value="">Formosa</option>
-             <option value="">Jujuy</option>
-             <option value="">La Pampa</option>
-             <option value="">  La Rioja</option>
-             <option value="">Mendoza</option>
-             <option value="">Neuquén</option>
-             <option value="">Río Negro</option>
-             <option value="">Salta</option>
-             <option value="">   San Juan	</option>
-             <option value=""> San Luis</option>
-             <option value="">  Santa Cruz	</option>
-             <option value="">Santa Fe</option>
-             <option value="">Santiago del Estero</option>
-                <option value=""> Tierra del Fuego</option>
-                <option value="">Tucumán</option>
+             <select class="custom-select" name="provincias">
+                <option value="">Elegir Provincia</option>
+                <?php foreach ($provincias as $value): ?>
+                  <?php if ($value == $provincia): ?>
+                    <option selected value="<?=$value?>"><?=$value?></option>
+                  <?php else: ?>
+                    <option value="<?=$value?>"><?=$value?></option>
+                  <?php endif; ?>
+                <?php endforeach; ?>
 
              </select>
 
