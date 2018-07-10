@@ -1,11 +1,50 @@
+
+<?php
+ require_once('funcionesregistro.php');
+
+$provincias = ['Buenos Aires','Catamarca','Chaco','Chubut','Corrientes','Entre Rios','Formosa','Jujuy','La Pampa','La Rioja','Mendoza','Neuquen','Rio Negro','Salta','San Juan','San Luis','Santa Fe','Santiago del Estero','Tierra del Fuego','Tucuman'];
+$escuelas = ['LaSalle','Colegio Palermo Chico','Colegio Mariano Moreno','Instituto Alberdi','Colegio Juana de Arco','Colegio Los Robles','Cangallo Schule','Colegio Rey Fahd'];
+$nivel = ['Primaria','Secundario'];
+$gradopri = ['1ºGrado','2ºGrado','3ºGrado','4ºGrado','5ºGrado','6ºGrado','7°Grado'];
+$gradosec = ['1ºGrado','2ºGrado','3ºGrado','4ºGrado','5°Grado'];
+
+
+
+$name = '';
+$apellido = '';
+$dni = '';
+$codigo = '';
+$telefono = '';
+$direccion = '';
+$email = '';
+
+
+$errores = [];
+
+if($_POST){
+
+  $name = trim($_POST['name']);
+  $apellido = trim($_POST['apellido']);
+  $dni = trim($_POST['dni']);
+  $telefono = trim($_POST['telefono']);
+  $codigo = trim($_POST['codigo']);
+  $direccion = trim($_POST['direccion']);
+  $email = trim($_POST['email']);
+
+
+
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html>
+
   <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <meta charset="utf-8">
     <title>Registro</title>
     <style>
-
 
       .cuerpo{
         background-color:#F7F9F8;
@@ -48,36 +87,40 @@
 
        <div class="form-group col-md-4">
          <label for="inputNombre">Nombre</label>
-         <input type="email" class="form-control" id="nombre" placeholder="Email">
+         <input type="email" class="form-control" name="nombre" placeholder="Email">
        </div>
        <div class="form-group col-md-4">
          <label for="inputPassword4">Apellido</label>
-         <input type="password" class="form-control" id="apellido" placeholder="Apellido">
+         <input type="password" class="form-control" name="apellido" placeholder="Apellido">
        </div>
 
       <div class="form-row d-flex justify-content-center ">
       </div>
         <div class="form-group col-md-8">
           <label for="inputDni" class=".col-form-label-sm">Dni</label>
-          <input type="numero" class="form-control" id="InputDni"  placeholder="Dni">
+          <input type="numero" class="form-control" name="dni"  placeholder="Dni">
         </div>
 
-        <div class="form-group col-md-8">
+        <div class="form-group col-md-5">
           <label for="inputtelfono">Telefono</label>
-          <input type="email" class="form-control" id="Inputelefono"  placeholder="Telefono">
+          <input type="email" class="form-control" name="telefono"  placeholder="Telefono">
         </div>
 
+        <div class="form-group col-md-3">
+          <label for="inputtelfono">Codigo de Area</label>
+          <input type="email" class="form-control" name="codigo"  placeholder="Cod Area">
+        </div>
       </div>
         <div class="form-row d-flex justify-content-center">
 
            <div class="form-group col-md-4">
              <label for="inputtelfono">Direccion</label>
-             <input type="text" class="form-control" id="InputDireccion"  placeholder="Direccion">
+             <input type="text" class="form-control" name="direccion"  placeholder="Direccion">
            </div>
 
            <div class="form-group col-md-4">
              <label for="Select1">Provincia</label>
-             <select class="custom-select" id="colegio">
+             <select class="custom-select" name="colegio">
                <option value="">Buenos Aires</option>
                <option value=""> Catamarca</option>
                <option value="">Chaco</option>
@@ -110,22 +153,23 @@
           <div class="form-row d-flex justify-content-center">
             <div class="form-group col-md-8">
               <label for="InputEmail1">Email</label>
-              <input type="email" class="form-control" id="InputEmail1"  placeholder="Ingresa tu email">
-            </div>
-            <div class="form-group col-md-8">
-              <label for="InputEmail1">Usuario</label>
-              <input type="text" class="form-control" id="InputUser"  placeholder="Ingresa tu Usuario">
+              <input type="email" class="form-control" name="email"  placeholder="Ingresa tu email">
             </div>
 
 
            <div class="form-group col-md-8">
              <label for="InputPassword1">Password</label>
-             <input type="password" class="form-control" id="password" placeholder="Password">
+             <input type="password" class="form-control" name="pwd" placeholder="Password">
            </div>
+           <div class="form-group col-md-8">
+             <label for="InputPassword1">Confirmar Password</label>
+             <input type="password" class="form-control" name="repwd" placeholder="Password">
+           </div>
+
 
            <div class="form-group col-md-8">
              <label for="Select1">Colegio</label>
-             <select class="custom-select" id="colegio">
+             <select class="custom-select" name="colegio">
                <option>LaSalle</option>
                <option>Colegio Palermo Chico</option>
                <option>Colegio Mariano Moreno</option>
@@ -139,7 +183,7 @@
 
            <div class="form-group col-md-8">
              <label for="exampleSelect1">Nivel</label>
-             <select class="custom-select" id="nivel">
+             <select class="custom-select" name="nivel">
                <option>Primario</option>
                <option>Secundario</option>
              </select>
@@ -147,7 +191,7 @@
 
            <div class="form-group col-md-8">
              <label for="exampleSelect1">Grado</label>
-             <select class="custom-select" id="grado">
+             <select class="custom-select" name="grado">
                <option>1ºGrado</option>
                <option>2ºGrado</option>
                <option>3ºGrado</option>
