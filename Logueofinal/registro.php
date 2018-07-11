@@ -52,6 +52,7 @@
 	</head>
    <body>
 		<?php if (!empty($errores)): ?>
+
 			<div class="div-errores alert alert-danger">
 				<ul>
 					<?php foreach ($errores as $value): ?>
@@ -66,11 +67,15 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="form-group <?= isset($errores['name']) ? 'has-error' : null ?>">
+							<!-- Isset Determina si una variable está definida y no es NULL-->
 							<label class="control-label">Nombre:</label>
 							<input type="text" class="form-control" name="name" value="<?=$name?>">
 							<span class="help-block" style="<?= !isset($errores['name']) ? 'display: none;' : ''; ?>">
 								<b class="glyphicon glyphicon-exclamation-sign"></b>
 								<?= isset($errores['name']) ? $errores['name'] : ''; ?>
+								<!--/isset() devuelve false aunque la variable haya sido declarada pues su valor es NULL-->
+								<!--determina si una variable ha sido declarada y su valor no es NULO-->
+
 							</span>
 						</div>
 					</div>
@@ -82,7 +87,7 @@
 								<b class="glyphicon glyphicon-exclamation-sign"></b>
 								<?= isset($errores['email']) ? $errores['email'] : ''; ?>
 							</span>
-		            </div>
+		         </div>
 					</div>
 				</div>
 

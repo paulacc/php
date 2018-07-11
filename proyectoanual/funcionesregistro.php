@@ -2,7 +2,9 @@
 
 function validar($info){
 
-  if(empty($name))
+ $errores = [];
+
+  if(empty($nombre))
     {
       $errores['name'] = "El campo nombre es obligatorio";
    }elseif (!ctype_alpha($name)) {
@@ -43,7 +45,7 @@ function validar($info){
   }elseif(strlen($codigo)< 1){
     $errores['codigo'] = "El codigo de area debe tener como minimo dos digitos";
   }
-   if(empty($pwd)){
+   if(empty($pwd) ){
      $errores['pwd'] = "Debes ingresar una contraseña ";
   }elseif ((strlen($pass) < 5 )) {
      $errores['pwd'] = "La contraseña debe tener más de 5 caracteres ";
@@ -51,8 +53,18 @@ function validar($info){
   if($pwd!= $rpwd){
     $errores['rpwd']= "las contraseñas deben coincidir ";
   }
-  if(empty($direccion)){
-     $errores['direccion'] = "la direccion es obligatoria";
+  if(empty($usuario)){
+     $errores['usuario'] = "El usuario es obligatorio";
+  }
+  if($colegio == ''){
+    $errores['colegio'] = "Por favor seleccionar colegio";
+  }
+  if($grado == ''){
+    $errores['grado'] = "Por favor elegir el grado";
+
+  }
+  if($nivele == ''){
+    $errores['nivel'] = "Por favor seleccionar nivel";
   }
            return $errores;
 }
@@ -74,7 +86,7 @@ function validar($info){
       'grado' => $info ['grado'],
 
     ];
-        return $user;
+      //return $user;
   }
 
 

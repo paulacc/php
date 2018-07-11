@@ -2,23 +2,23 @@
 <?php
  require_once('funcionesregistro.php');
 
-$escuelas = ['LaSalle','Colegio Palermo Chico','Colegio Mariano Moreno','Instituto Alberdi','Colegio Juana de Arco','Colegio Los Robles','Cangallo Schule','Colegio Rey Fahd'];
-$nivel = ['Primaria','Secundario'];
-$gradopri = ['1ºGrado','2ºGrado','3ºGrado','4ºGrado','5ºGrado','6ºGrado','7°Grado'];
-$gradosec = ['1ºGrado','2ºGrado','3ºGrado','4ºGrado','5°Grado'];
+$colegios = ['LaSalle','Colegio Palermo Chico','Colegio Mariano Moreno','Instituto Alberdi','Colegio Juana de Arco','Colegio Los Robles','Cangallo Schule','Colegio Rey Fahd'];
+$niveles = ['Primaria','Secundario'];
+$gradospri = ['1ºGrado','2ºGrado','3ºGrado','4ºGrado','5ºGrado','6ºGrado','7°Grado'];
+$gradossec = ['1ºGrado','2ºGrado','3ºGrado','4ºGrado','5°Grado'];
 
 
 
 $name = '';
 $apellido = '';
+$usuario = '';
 $dni = '';
 $codigo = '';
 $telefono = '';
-$direccion = '';
-$usuario = '';
 $email = '';
-
-
+$colegio = '';
+$nivel = '';
+$grado = '';
 
 $errores = [];
 
@@ -28,20 +28,23 @@ if($_POST){
   $apellido = trim($_POST['apellido']);
   $usuario = trim($_POST['usuario']);
   $dni = trim($_POST['dni']);
-  $telefono = trim($_POST['telefono']);
   $codigo = trim($_POST['codigo']);
+  $telefono = trim($_POST['telefono']);
   $email = trim($_POST['email']);
+  $colegio = trim($_POST['colegio']);
+  $nivel = trim($_POST['nivel']);
+  $grado = trim($_POST['grado']);
 
           $errores = validar($_POST);
 
           if (empty($errores)) {
-            //empty se usa para saber si variable esta vacia
-            //isset determina si es null
-
+            //Empty Determina si una variable está vacía
+            //Isset Determina si una variable está definida y no es NULL
+            //isset puede devuelvor true para variables con valores vacíos
             $user = guardarUser($_POST);
 
 
-              }
+          }
 
 }
  ?>
@@ -77,15 +80,21 @@ if($_POST){
     </style>
   </head>
   <body class="cuerpo">
-
+    <?php if (!empty($errores)): ?>
+      <!-- Si no esta vacia errores -->
+      <div class="div-errores alert alert-danger">
+        <ul>
+          <?php foreach ($errores as $value): ?>
+          <li><?=$value?></li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+    <?php endif; ?>
    <br>
-
-
-
 
     <div class="container-fluid d-flex justify-content-center">
 
-      <form class="formulario col-md-8 ">
+      <form method="post" class="formulario col-md-8 ">
 
         <div class="card-header">
             <h3 class="mb-0 text-center">Formulario de Registro</h3>
@@ -93,55 +102,46 @@ if($_POST){
         <br>
       <div class="form-row d-flex justify-content-center ">
 
-       <div class="form-group col-md-4">
+       <div class="form-group col-md-4  <?= isset($errores['name']) ? 'has-error' : null ?>">
          <label for="inputNombre">Nombre</label>
-         <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+         <input type="text" class="form-control" name="name" placeholder="Nombre" value="<?=$name?>">
+         <span class="help-block" style="<?= !isset($errores['name']) ? 'display: none;' : ''; ?>">
+            <b class="glyphicon glyphicon-exclamation-sign"></b>
+            <?= isset($errores['name']) ? $errores['name'] : ''; ?>
+          </span>
        </div>
        <div class="form-group col-md-4">
          <label for="inputPassword4">Apellido</label>
-         <input type="text" class="form-control" name="apellido" placeholder="Apellido">
+         <input type="text" class="form-control" name="apellido" placeholder="Apellido" value="<?=$apellido?>">
        </div>
 
       <div class="form-row d-flex justify-content-center ">
-      </div>
+
         <div class="form-group col-md-8">
           <label for="inputDni" class=".col-form-label-sm">Dni</label>
-          <input type="numero" class="form-control" name="dni"  placeholder="Dni">
+          <input type="numero" class="form-control" name="dni"  placeholder="Dni" value="<?=$dni?>">
         </div>
 
         <div class="form-group col-md-5">
           <label for="inputtelfono">Telefono</label>
-          <input type="numero" class="form-control" name="telefono"  placeholder="Telefono">
+          <input type="numero" class="form-control" name="telefono"  placeholder="Telefono" value="<?=$telefono?>">
         </div>
 
         <div class="form-group col-md-3">
           <label for="inputCodigo">Codigo de Area</label>
-          <input type="numero" class="form-control" name="codigo"  placeholder="Cod Area">
+          <input type="numero" class="form-control" name="codigo"  placeholder="Cod Area" value="<?=$codigo?>">
         </div>
       </div>
-        <div class="form-row d-flex justify-content-center">
 
-
-
-           <div class="form-group col-md-4" <?= isset($errores['provincias']) ? 'has-error' : null ?>>
-             <label for="Select1">Provincia</label>
-             <select class="custom-select" name="provincias">
-                <option value="">Elegir Provincia</option>
-                <?php foreach ($provincias as $value): ?>
-                  <?php if ($value == $provincia): ?>
-                    <option selected value="<?=$value?>"><?=$value?></option>
-                  <?php else: ?>
-                    <option value="<?=$value?>"><?=$value?></option>
-                  <?php endif; ?>
-                <?php endforeach; ?>
-
-           </div>
-        </div>
-
+      <div class="form-group col-md-8">
+        <label for="inputPassword4">Usuario</label>
+        <input type="text" class="form-control" name="usuario" placeholder="Usuario" value="<?=$usuario?>">
+      </div>
+            </div>
           <div class="form-row d-flex justify-content-center">
             <div class="form-group col-md-8">
               <label for="InputEmail1">Email</label>
-              <input type="email" class="form-control" name="email"  placeholder="Ingresa tu email">
+              <input type="email" class="form-control" name="email"  placeholder="Ingresa tu email" value="<?=$email?>">
             </div>
 
 
@@ -158,41 +158,46 @@ if($_POST){
            <div class="form-group col-md-8">
              <label for="Select1">Colegio</label>
              <select class="custom-select" name="colegio">
-               <option>LaSalle</option>
-               <option>Colegio Palermo Chico</option>
-               <option>Colegio Mariano Moreno</option>
-               <option>Instituto Alberdi</option>
-               <option>Colegio Juana de Arco</option>
-               <option>Colegio Los Robles</option>
-               <option>Cangallo Schule</option>
-               <option>Colegio Rey Fahd</option>
-             </select>
+               <option value="">Elegir Colegio</option>
+               <?php foreach ($colegios as $value): ?>
+               <?php if ($value == $colegio): ?>
+                  <option selected value="<?=$value?>"><?=$value?></option>
+                <?php else: ?>
+                  <option value="<?=$value?>"><?=$value?></option>
+                <?php endif; ?>
+                <?php endforeach; ?>
+              </select>
            </div>
 
            <div class="form-group col-md-8">
              <label for="exampleSelect1">Nivel</label>
              <select class="custom-select" name="nivel">
-               <option>Primario</option>
-               <option>Secundario</option>
+               <option value="">Elegir Nivel</option>
+                <?php foreach ($niveles as $value):?>
+                  <?php if($value == $nivel): ?>
+                  <option selected value="<?=$value?>"><?=$value?></option>
+                <?php else: ?>
+                  <option value="<?=$value?>"><?=$value?></option>
+                <?php endif; ?>
+              <?php endforeach; ?>
              </select>
            </div>
 
            <div class="form-group col-md-8">
-             <label for="exampleSelect1">Grado</label>
+             <label for="exampleSelect2">Grado</label>
              <select class="custom-select" name="grado">
-               <option>1ºGrado</option>
-               <option>2ºGrado</option>
-               <option>3ºGrado</option>
-               <option>4ºGrado</option>
-               <option>5ºGrado</option>
-               <option>6ºGrado</option>
+               <option value="">Elegir Grado</option>
+               <?php foreach ($gradospri as $value): ?>
+                   <?php if($value == $gradopri): ?>
+                   <option selected value="<?=$value?>"><?=$value?></option>
+                 <?php else: ?>
+                   <option value="<?=$value?>"><?=$value?></option>
+                 <?php endif;?>
+               <?php endforeach; ?>
              </select>
            </div>
 
-
           </div>
-
-
 
              <div class="form-row d-flex justify-content-center">
                   <button type="submit" class="btn btn-primary boton">Registrar</button>
