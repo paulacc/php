@@ -2,7 +2,6 @@
 <?php
  require_once('funcionesregistro.php');
 
-$provincias = ['Buenos Aires','Catamarca','Chaco','Chubut','Corrientes','Entre Rios','Formosa','Jujuy','La Pampa','La Rioja','Mendoza','Neuquen','Rio Negro','Salta','San Juan','San Luis','Santa Fe','Santiago del Estero','Tierra del Fuego','Tucuman'];
 $escuelas = ['LaSalle','Colegio Palermo Chico','Colegio Mariano Moreno','Instituto Alberdi','Colegio Juana de Arco','Colegio Los Robles','Cangallo Schule','Colegio Rey Fahd'];
 $nivel = ['Primaria','Secundario'];
 $gradopri = ['1ºGrado','2ºGrado','3ºGrado','4ºGrado','5ºGrado','6ºGrado','7°Grado'];
@@ -16,7 +15,9 @@ $dni = '';
 $codigo = '';
 $telefono = '';
 $direccion = '';
+$usuario = '';
 $email = '';
+
 
 
 $errores = [];
@@ -25,10 +26,10 @@ if($_POST){
 
   $name = trim($_POST['name']);
   $apellido = trim($_POST['apellido']);
+  $usuario = trim($_POST['usuario']);
   $dni = trim($_POST['dni']);
   $telefono = trim($_POST['telefono']);
   $codigo = trim($_POST['codigo']);
-  $direccion = trim($_POST['direccion']);
   $email = trim($_POST['email']);
 
           $errores = validar($_POST);
@@ -36,14 +37,14 @@ if($_POST){
           if (empty($errores)) {
             //empty se usa para saber si variable esta vacia
             //isset determina si es null
-            
+
             $user = guardarUser($_POST);
 
 
+              }
+
 }
-
  ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -120,10 +121,6 @@ if($_POST){
       </div>
         <div class="form-row d-flex justify-content-center">
 
-           <div class="form-group col-md-4">
-             <label for="inputtelfono">Direccion</label>
-             <input type="text" class="form-control" name="direccion"  placeholder="Direccion">
-           </div>
 
 
            <div class="form-group col-md-4" <?= isset($errores['provincias']) ? 'has-error' : null ?>>
@@ -138,11 +135,7 @@ if($_POST){
                   <?php endif; ?>
                 <?php endforeach; ?>
 
-             </select>
-
-
            </div>
-
         </div>
 
           <div class="form-row d-flex justify-content-center">
@@ -198,6 +191,7 @@ if($_POST){
 
 
           </div>
+
 
 
              <div class="form-row d-flex justify-content-center">

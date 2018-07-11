@@ -67,8 +67,6 @@ function validar($info){
       'dni' => $info['dni'],
       'pwd' => password_hash($info['pwd'], PASSWORD_DEFAULT),
       'email' => $info['email'],
-      'direccion' => $info['direccion'],
-      'provincia' => $info['provincia'],
       'codigo' => $info['codigo'],
       'telefono'=> $info['telefono'],
       'colegio' => $info['colegio'],
@@ -79,12 +77,13 @@ function validar($info){
         return $user;
   }
 
+
  function guardarUser($info){
     $user = crearUser($info);
     $userJSON = json_encode($user);
 
     file_put_contents('usuarios.json',$userJSON . PHP_EOL, FILE_APPEND);
-      
+
 
  }
  ?>
