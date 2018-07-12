@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Encuesta</title>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-38256479-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+   <!-- Global site tag (gtag.js) - Google AdWords: 990667425 --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-990667425"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); </script>
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+    <script src="js/moment.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+<style>
+input.error {    border: red 1px solid;}
+.codarea {
+    font-size: 15px;
+    color: #3C3C3B;
+    float: left;
+    width: 6%;
+    height: auto;
+    margin-top: 6px;
+}
+</style>
+
+    <!-- Bootstrap Datetimepicker JavaScript -->
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="../js/country.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+ $.get("getencuesta.php?id=2", function(data) {
+ $("#preguntas").html(data);
+ $(function () {
+			$("#formulario").validate({
+				rules: {
+					"nombre": "required",
+					"edad": "required",
+					"telefono":  { required: { depends: function(element) {  return $("#numero_secundario").val()==""; }}, minlength: 6, maxlength:8, digits: true},
+					"ptelefono":  {required:{ depends: function(element) {  return $("#numero_secundario").val()==""; }},digits: true,minlength: 2, maxlength:4},
+					"ptelefono2":  {required: { depends: function(element) {  return $("#telefono").val()==""; }}, minlength: 2,maxlength: 4, digits: true},
+					"telefono2":  {required: { depends: function(element) {  return $("#telefono").val()==""; }}, minlength: 6, maxlength: 8,digits: true},
+					"email":  {  required: true,    email: true   },
+					"preguntas[5]":  {  required: true  },
+					"preguntas[6]":  {  required: true  },
+					"preguntas[7]":  {  required: true  }
+				},
+				messages: {
+				  "preguntas[5]":  "",
+					"preguntas[6]":  "",
+					"preguntas[7]":  "",
+					"nombre": "El nombre es obligatorio",
+					"email": "El Email es obligatorio",
+					"edad": "la edad es obligatoria",
+					"telefono": "Verificar cantidad de digitos ingresados",
+					"telefono2": "Verificar cantidad de digitos ingresados",
+					"ptelefono":  "El codigo de area debe tener entre 2 y 4 digitos",
+					"ptelefono2":  "El codigo de area debe tener entre 2 y 4 digitos"
+
+				},
+
+				submitHandler: function(form) {
+					$("#boton").attr("disabled", "disabled");
+					$.post("guardarencuesta.php", $("#formulario").serialize(),
+					function() {
+						 window.location.href = 'https://donar.proyectopuravida.org.ar/graciasencuesta.html';
+
+
+					});
+				},
+
+				invalidHandler: function(form, validator) {
+					var errors = validator.numberOfInvalids();
+					if (errors) {
+						alert('Debe responder la encuesta y completar todos los datos');
+					}
+				}
+			});
+		});	});
+
+
+
+		});
+
+		function getUrlVars()
+		{
+			var vars = [], hash;
+			var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+			for(var i = 0; i < hashes.length; i++)
+		{
+			hash = hashes[i].split('=');
+			vars.push(hash[0]);
+			vars[hash[0]] = hash[1];
+		}
+			return vars;
+		}
+
+		function isNumberKey(evt)
+		{
+			var charCode = (evt.which) ? evt.which : event.keyCode
+			if (charCode > 31 && (charCode < 48 || charCode > 57))
+				return false;
+
+			return true;
+		}
+
+
+	</script>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+
+    <!-- Site Core CSS -->
+    <link href="css/styledia.css" rel="stylesheet">
+	<!-- Site Core CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Font Family Raleway -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,200,300,500,600,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div class="top-gradient "></div>
+                        www.proyectopuravida.org.ar
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+
+    <div class="row">
+    <div class="col-lg-12 text-center">
+       <a href="http://www.proyectopuravida.org.ar">
+             <img src="images/logogracias.jpg" alt=""></a>
+        </div>
+  </div>
+
+    <div class="container">
+      <div class="row">
+          <div class="col-sm-12 text-center">
+              <h1 class="logo"></h1>
+              <h2 class="site-description"><span class="extra">Los sueños son para CUMPLIRLOS</span></h2>
+          </div>
+        </div>
+           <!-- /.row -->
+
+         <div class="row">
+        <div class="col-sm-12">
+        <p class="text-center">
+                    La causa que te moviliza puede convertirse en nuestra próxima misión! Decidamos juntos en dónde vamos a poner nuestros esfuerzos para dar soluciones permanentes a problemas profundos. Tu opinión es importante y queremos escucharte. <br><strong> Ayudanos completando esta breve encuesta!</strong> <br>
+
+
+
+
+        </p>
+          <br>
+        </div>
+      </div>
+    </div>
+    <!-- /.container -->
+
+    <header class="encuesta-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-sm-12">
+              <form class="form-horizontal remeras-form" role="form" action="dar.php?desde=Undiaparadar" method="post" id="formulario">
+                <div class="step_1">
+                 <div class="form-group">
+                    <div class="col-sm-6">
+
+
+<form id="formulario" method="post">
+<div class="form-group hidden-xs"><div class="col-sm-12"><div class="section-form gray">Encuesta:</div></div></div>
+
+<div id="preguntas">
+
+</div>
+
+
+
+<br><br>
+
+
+
+
+
+   <div class="container">
+
+        <div class="row">
+
+            <div class="col-sm-6">
+              <form class="form-horizontal remeras-form" role="form" action="dar.php?desde=Undiaparadar" method="post" id="formulario">
+                <div class="step_1">
+                <div class="form-group hidden-xs"><div class="col-sm-12"><div class="section-form gray">Tus Datos:</div></div></div>
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
+              <input type="hidden" id="artista" name="artista"/>
+                <input type="hidden" id="desde" name="desde" value="Undiaparadar"/>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="edad" name="edad" placeholder="edad">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                    </div>
+                   </div>
+                <div class="form-group">
+				  <div class="col-sm-6">
+                      <p><span class="codarea">0</span><input onkeypress="return justNumbers(event);" style="width:23%; float:left;" class="form-control" type="tel" placeholder="Ej. 11" id="pcelular" name="ptelefono2">
+                      <span class="quince">15</span><input onkeypress="return justNumbers(event);" style="width:65%; float:left;" class="form-control" type="tel" placeholder="Num. Celular*" id="numero_secundario" name="telefono2"></p>
+                    </div>
+
+                     <div class="col-sm-6">
+                      <p><span class="codarea">0</span><input onkeypress="return justNumbers(event);" style="width:23%; float:left;" class="form-control" type="tel" placeholder="Ej. 11" id="ptelefono" name="ptelefono">
+                     <input onkeypress="return justNumbers(event);" style="width:70%; float:right;" class="form-control" type="tel" placeholder="Teléfono Fijo*" id="telefono" name="telefono"></p>
+                    </div>
+
+
+                </div>
+				 <div class="regla">
+                    <div class="col-sm-12">
+                       Ingresar el código de area sin 0 ni 15
+                     </div>
+                     </div>
+                </div>
+
+
+
+            <div align="center">
+
+
+
+<input type="submit" id="boton" value="Enviar formulario">
+
+
+ </div>
+
+</form>
+ </div>
+                      <div class="form-group visible-xs copyright text-center">
+                          <div class="col-sm-12">
+                            <p class="bold">www.proyectopuravida.org.ar<br>Todos los derechos reservados</p>
+                            <p class="light">Contáctenos en<br>contacto@proyectopuravida.org</p>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <aside class="visible-lg">
+                <div class="col-sm-12">
+                  <img alt="" src="images/digicert.png" />
+                  <p>Esta página contiene un formulario seguro
+                  <br><br>La información suministrada se transmite de forma encriptada a través de Internet, y sólo nosotros podremos acceder a ella.</p>
+
+              </aside>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <footer>
+          <div class="row">
+            <div class="col-sm-12">
+              <ul>
+                <li><a href="http://www.proyectopuravida.org.ar" title="Proyecto Pura Vida">www.proyectopuravida.org.ar | </li>
+                <li>Todos los derechos reservados | </li>
+                <li>Contáctenos en <a href="mailto:contacto@proyectopuravida.org">contacto@proyectopuravida.org</a></li>
+              </ul>
+            </div>
+            <div class="gradient"></div>
+            <div class="col-sm-12 text-center">
+              <img alt="" src="images/data-fiscal.jpg" />
+            </div>
+          </div>
+             <div>  <p>"El titular de los datos personales tiene la facultad de ejercer el derecho de acceso a los mismos en forma gratuita a intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo al efecto conforme lo establecido en el artículo 14, inciso 3 de la Ley Nº 25.326".
+
+                   <p> "La DIRECCION NACIONAL DE PROTECCION DE DATOS PERSONALES, Órgano de Control de la Ley Nº 25.326, tiene la atribución de atender las denuncias y reclamos que se interpongan con relación al incumplimiento de las normas sobre protección de datos personales”.</span>
+
+                </div>
+          <!-- /.row -->
+        </footer>
+        <!-- /footer -->
+
+    </div>
+    <!-- /.container -->
+
+
+
+</body>
+
+</html>

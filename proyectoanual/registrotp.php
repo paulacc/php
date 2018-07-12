@@ -24,19 +24,25 @@ if($_POST){
   $codigo = trim($_POST['codigo']);
   $telefono = trim($_POST['telefono']);
   $email = trim($_POST['email']);
-  
 
-          $errores = validar($_POST);
+
+          $errores = validar($_POST,'imgperfil');
+          //imgperfil pasa a ser $archivo en la funcion de validar.de esa forma toma el nombre?
+
+    if(empty($errores)){
+
+              $errores = guardarIMG('imgperfil');
+
 
           if (empty($errores)) {
             //Empty Determina si una variable está vacía
             //Isset Determina si una variable está definida y no es NULL
             //isset puede devuelvor true para variables con valores vacíos
-            $user = guardarUser($_POST);
+            $user = guardarUser($_POST,'imgperfil');
             header('location:index.html');
 
           }
-
+     }
 }
  ?>
 <!DOCTYPE html>
@@ -141,7 +147,7 @@ if($_POST){
 
 
            <div class="form-group col-md-8">
-             <label for="InputPassword1">Password</label>
+             <label for="Password">Password</label>
              <input type="password" class="form-control" name="pwd" placeholder="Password">
            </div>
            <div class="form-group col-md-8">
@@ -149,7 +155,16 @@ if($_POST){
              <input type="password" class="form-control" name="repwd" placeholder="Password">
            </div>
 
+           <div class="form-group col-md-8">
 
+               <label for="name" class="control-label">Subir imagen Perfil</label>
+               <input class="form-control" type="file" name="imgperfil" value="<?= isset($_FILES['imgperfil']) ? $_FILES['imgperfil']['name'] : null ?>">
+               <span class="help-block" style="<?= !isset($errores['imgperfil']) ? 'display: none;' : '' ; ?>">
+                 <b class="glyphicon glyphicon-exclamation-sign"></b>
+                 <?= isset($errores['imgperfil']) ? $errores['imgperfil'] : '' ;?>
+               </span>
+
+           </div>
 
           </div>
 
