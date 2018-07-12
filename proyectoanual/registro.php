@@ -2,11 +2,6 @@
 <?php
  require_once('funcionesregistro.php');
 
-$colegios = ['LaSalle','Colegio Palermo Chico','Colegio Mariano Moreno','Instituto Alberdi','Colegio Juana de Arco','Colegio Los Robles','Cangallo Schule','Colegio Rey Fahd'];
-$niveles = ['Primaria','Secundario'];
-$gradospri = ['1ºGrado','2ºGrado','3ºGrado','4ºGrado','5ºGrado','6ºGrado','7°Grado'];
-$gradossec = ['1ºGrado','2ºGrado','3ºGrado','4ºGrado','5°Grado'];
-
 
 
 $name = '';
@@ -16,9 +11,7 @@ $dni = '';
 $codigo = '';
 $telefono = '';
 $email = '';
-$colegio = '';
-$nivel = '';
-$grado = '';
+
 
 $errores = [];
 
@@ -31,9 +24,7 @@ if($_POST){
   $codigo = trim($_POST['codigo']);
   $telefono = trim($_POST['telefono']);
   $email = trim($_POST['email']);
-  $colegio = trim($_POST['colegio']);
-  $nivel = trim($_POST['nivel']);
-  $grado = trim($_POST['grado']);
+  
 
           $errores = validar($_POST);
 
@@ -42,7 +33,7 @@ if($_POST){
             //Isset Determina si una variable está definida y no es NULL
             //isset puede devuelvor true para variables con valores vacíos
             $user = guardarUser($_POST);
-
+            header('location:index.html');
 
           }
 
@@ -74,6 +65,10 @@ if($_POST){
       }
      .boton{
        background-color: #818043;
+     }
+
+     .has-error{
+       background-color: red;
      }
 
      @import url('https://fonts.googleapis.com/css?family=Lato|PT+Sans|Raleway|Roboto');
@@ -155,47 +150,6 @@ if($_POST){
            </div>
 
 
-           <div class="form-group col-md-8">
-             <label for="Select1">Colegio</label>
-             <select class="custom-select" name="colegio">
-               <option value="">Elegir Colegio</option>
-               <?php foreach ($colegios as $value): ?>
-               <?php if ($value == $colegio): ?>
-                  <option selected value="<?=$value?>"><?=$value?></option>
-                <?php else: ?>
-                  <option value="<?=$value?>"><?=$value?></option>
-                <?php endif; ?>
-                <?php endforeach; ?>
-              </select>
-           </div>
-
-           <div class="form-group col-md-8">
-             <label for="exampleSelect1">Nivel</label>
-             <select class="custom-select" name="nivel">
-               <option value="">Elegir Nivel</option>
-                <?php foreach ($niveles as $value):?>
-                  <?php if($value == $nivel): ?>
-                  <option selected value="<?=$value?>"><?=$value?></option>
-                <?php else: ?>
-                  <option value="<?=$value?>"><?=$value?></option>
-                <?php endif; ?>
-              <?php endforeach; ?>
-             </select>
-           </div>
-
-           <div class="form-group col-md-8">
-             <label for="exampleSelect2">Grado</label>
-             <select class="custom-select" name="grado">
-               <option value="">Elegir Grado</option>
-               <?php foreach ($gradospri as $value): ?>
-                   <?php if($value == $gradopri): ?>
-                   <option selected value="<?=$value?>"><?=$value?></option>
-                 <?php else: ?>
-                   <option value="<?=$value?>"><?=$value?></option>
-                 <?php endif;?>
-               <?php endforeach; ?>
-             </select>
-           </div>
 
           </div>
 

@@ -2,20 +2,27 @@
 
 function validar($info){
 
- $errores = [];
+  $nombre = trim($info['name']);
+  $apellido = trim($info['apellido']);
+  $usuario = trim($info['usuario']);
+  $dni = trim($info['dni']);
+  $codigo = trim($info['codigo']);
+  $telefono = trim($info['telefono']);
+  $email = trim($info['email']);
+  $pwd = trim($info['pwd']);
+  $rpwd = trim($info['repwd']);
 
-  if(empty($nombre))
-    {
+ $errores = [];
+  if(empty($nombre)){
       $errores['name'] = "El campo nombre es obligatorio";
-   }elseif (!ctype_alpha($name)) {
+   }elseif (!ctype_alpha($nombre)) {
       $errores['name'] = "El campo nombre solo debe contener letras";
    }
    if(empty($apellido)){
-     $errores['apellido'] = "El campo apellido es obligatorio";
-
-  }elseif(!ctype_alpha($apellido)){
+      $errores['apellido'] = "El campo apellido es obligatorio";
+   }elseif(!ctype_alpha($apellido)){
      $errores['apellido'] = "El campo apellido sólo debe contener letras";
-  }
+   }
    if(empty($dni)){
      $errores['dni'] = "El campo dni es obligatorio";
    }elseif(!is_numeric($dni)){
@@ -28,9 +35,10 @@ function validar($info){
    // }elseif(substr_count($email, "@") != 1) {
    }elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
      $errores['email'] = 'El correo no es válido" <br>';
-  }elseif(verificarEmail($email)){
-     $errores = 'Este email ya se encuentra registrado';
   }
+  // elseif(verificarEmail($email)){
+  //    $errores = 'Este email ya se encuentra registrado';
+  // }
   if(empty($telefono)){
    $errores['telefono']= "El campo telefono es obligatorio";
  }elseif(!is_numeric($telefono)){
@@ -47,7 +55,7 @@ function validar($info){
   }
    if(empty($pwd) ){
      $errores['pwd'] = "Debes ingresar una contraseña ";
-  }elseif ((strlen($pass) < 5 )) {
+  }elseif ((strlen($pwd) < 5 )) {
      $errores['pwd'] = "La contraseña debe tener más de 5 caracteres ";
   }
   if($pwd!= $rpwd){
@@ -56,16 +64,8 @@ function validar($info){
   if(empty($usuario)){
      $errores['usuario'] = "El usuario es obligatorio";
   }
-  if($colegio == ''){
-    $errores['colegio'] = "Por favor seleccionar colegio";
-  }
-  if($grado == ''){
-    $errores['grado'] = "Por favor elegir el grado";
 
-  }
-  if($nivele == ''){
-    $errores['nivel'] = "Por favor seleccionar nivel";
-  }
+
            return $errores;
 }
 
@@ -86,7 +86,7 @@ function validar($info){
       'grado' => $info ['grado'],
 
     ];
-      //return $user;
+      return $user;
   }
 
 
@@ -98,4 +98,7 @@ function validar($info){
 
 
  }
+
+
+
  ?>

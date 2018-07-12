@@ -78,7 +78,7 @@
 
 			if ($ext != 'jpg' && $ext != 'png' && $ext != 'jpeg') {
 				$errores['avatar'] = "Formatos admitidos: JPG o PNG";
-			} 
+			}
 
 		}
 
@@ -245,7 +245,7 @@
 		} else {
 			// Si el mail existe, me guardo al usuario dueño del mismo
 			// $usuario = existeEmail($email);
-			
+
  			// Pregunto si coindice la password escrita con la guardada en el JSON
       	if (!password_verify($pass, $usuario["pass"])) {
          	$arrayADevolver['pass'] = "Credenciales incorrectas";
