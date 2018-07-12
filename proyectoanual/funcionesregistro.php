@@ -1,6 +1,6 @@
 <?php
 
-  function validar($info,$archivo){
+  function validar($info){
 
       $nombre = trim($info['name']);
       $apellido = trim($info['apellido']);
@@ -63,11 +63,11 @@
             }
             if(empty($usuario)){
                $errores['usuario'] = "El usuario es obligatorio";
-            }if($_FILES[$archivo]['error'] != UPLOAD_ERR_OK){
+            }if($_FILES['imgperfil']['error'] != UPLOAD_ERR_OK){
               //si no hay imagen entonces
-              $errores['imgperfil'] = "Por favor subir foto de perfil";
+              $errores['usuario'] = "Por favor subir foto de perfil";
             }else{
-              $ext = strtolower(pathinfo($_FILES[$archivo]['name'], PATHINFO_EXTENSION));
+              $ext = strtolower(pathinfo($_FILES['imgperfil']['name'], PATHINFO_EXTENSION));
               //strtolower — Convierte una cadena a minúsculas , esto por que?
               //ext obtener la extension del archivo
                   if($ext != 'jpg' && $ext != 'png' && $ext != 'jpg'){
@@ -80,7 +80,7 @@
 
 
 
-      function crearUser($info,$imagen){
+      function crearUser($info){
 
             $user = [
               'name' => $info['name'],
@@ -90,16 +90,13 @@
               'email' => $info['email'],
               'codigo' => $info['codigo'],
               'telefono'=> $info['telefono'],
-              'colegio' => $info['colegio'],
-              'nivel' => $info ['nivel'],
-              'grado' => $info ['grado'],
-              'foto' => 'images/' . $info['email'] . '.' . pathinfo($_FILES[$imagen]['name'], PATHINFO_EXTENSION)
+              'foto' => 'images/' . $info['email'] . '.' . pathinfo($_FILES['imgperfil']['name'], PATHINFO_EXTENSION)
             ];
               return $user;
           }
 
 
-            function guardarUser($info,$imagen){
+            function guardarUser($info){
             $user = crearUser($info);
             $userJSON = json_encode($user);
 
@@ -108,17 +105,16 @@
 
           }
 
-          function guardarIMG($imagenperfil){
+          function guardarIMG(){
                  $errores = [];
-
-                 if ($_FILES[$imagenperfil]['error'] == UPLOAD_ERR_OK) {
+                 if ($_FILES['imgperfil']['error'] == UPLOAD_ERR_OK) {
                    // 1 Capturo el nombre de la imagen, para obtener la extensión
-                   $nombrearchivo = $_FILES[$imagenperfil]['name'];
+                   $nombrearchivo = $_FILES['imgperfil']['name'];
 
                    // Obtengo la extensión de la imagen
                    $ext = pathinfo($nombrearchivo, PATHINFO_EXTENSION);
                    // Capturo el archivo temporal
-                   $archivoFisico = $_FILES[$imagenperfil]['tmp_name'];
+                   $archivoFisico = $_FILES['imgperfil']['tmp_name'];
                    //tp_name -El nombre temporal del fichero en el cual se almacena el fichero subido en el servidor.
                    // Pregunto si la extensión es la deseada
                    if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png') {
@@ -131,11 +127,11 @@
                     move_uploaded_file($archivoFisico, $rutaFinalConNombre);
                     }
                      else {
-                       $errores['imagenperfil'] = 'El formato tiene que ser JPG, JPEG, PNG o GIF';
+                       $errores['imgperfil'] = 'El formato tiene que ser JPG, JPEG, PNG o GIF';
                      }
                      } else {
                        // Genero error si no se puede subir
-                       $errores['imagenperfil'] = 'Por favor subir imagen de perfil';
+                       $errores['imgperfil'] = 'Por favor subir imagen de perfil';
                      }
 
                   return $errores;

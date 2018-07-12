@@ -1,4 +1,4 @@
-
+Las clases de universo nunca se instancia. Nunca se usa el new
 
 Instanciar objeto
 $Autodeleo = new Coche();
@@ -35,4 +35,3 @@ class Auto extends Vehiculo
 
 la sub clase Auto hereda de la clase Vehiculo, tiene alguna cuestion propio
 sobreescribo las funciones que quiero cambiar
- 

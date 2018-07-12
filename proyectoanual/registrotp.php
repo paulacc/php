@@ -38,7 +38,7 @@ if($_POST){
             //Empty Determina si una variable está vacía
             //Isset Determina si una variable está definida y no es NULL
             //isset puede devuelvor true para variables con valores vacíos
-            $user = guardarUser($_POST,'imgperfil');
+            $user = guardarUser($_POST);
             header('location:index.html');
 
           }
@@ -95,7 +95,7 @@ if($_POST){
 
     <div class="container-fluid d-flex justify-content-center">
 
-      <form method="post" class="formulario col-md-8 ">
+      <form method="post" class="formulario col-md-8 " enctype="multipart/form-data">
 
         <div class="card-header">
             <h3 class="mb-0 text-center">Formulario de Registro</h3>
@@ -158,7 +158,7 @@ if($_POST){
            <div class="form-group col-md-8">
 
                <label for="name" class="control-label">Subir imagen Perfil</label>
-               <input class="form-control" type="file" name="imgperfil" value="<?= isset($_FILES['imgperfil']) ? $_FILES['imgperfil']['name'] : null ?>">
+               <input class="form-control" type="file" name="imgperfil" value="">
                <span class="help-block" style="<?= !isset($errores['imgperfil']) ? 'display: none;' : '' ; ?>">
                  <b class="glyphicon glyphicon-exclamation-sign"></b>
                  <?= isset($errores['imgperfil']) ? $errores['imgperfil'] : '' ;?>
