@@ -175,7 +175,7 @@
 		if ($_FILES[$laImagen]['error'] == UPLOAD_ERR_OK) {
 			// Capturo el nombre de la imagen, para obtener la extensión
 			$nombreArchivo = $_FILES[$laImagen]['name'];
-			// Obtengo la extensión de la imagen
+			// Obtengo la extensión de la imagenguardarIMG
 			$ext = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
 			// Capturo el archivo temporal
 			$archivoFisico = $_FILES[$laImagen]['tmp_name'];

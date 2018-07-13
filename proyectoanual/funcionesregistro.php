@@ -102,7 +102,6 @@
 
             file_put_contents('usuarios.json',$userJSON . PHP_EOL, FILE_APPEND);
 
-
           }
 
           function guardarIMG(){
