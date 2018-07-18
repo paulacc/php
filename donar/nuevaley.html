@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Encuesta</title>
+    <title>Nueva Ley</title>
 
     <!-- Google Analytics -->
     <script>
@@ -23,67 +23,55 @@
     </script>
     <!-- End Google Analytics -->
 
-   <!-- Global site tag (gtag.js) - Google AdWords: 990667425 --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-990667425"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); </script>
+    <!-- Global site tag (gtag.js) - Google AdWords: 990667425 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-990667425"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); </script>
+
+
+
 
     <!-- jQuery Version 1.11.1 -->
     <script src="js/jquery.js"></script>
     <script src="js/moment.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-<style>
-input.error {    border: red 1px solid;}
-.codarea {
-    font-size: 15px;
-    color: #3C3C3B;
-    float: left;
-    width: 6%;
-    height: auto;
-    margin-top: 6px;
-}
-</style>
 
     <!-- Bootstrap Datetimepicker JavaScript -->
     <script src="js/bootstrap-datetimepicker.min.js"></script>
 	<script src="js/jquery.validate.min.js"></script>
 	<script src="../js/country.js"></script>
 	<script type="text/javascript">
-
 		$(document).ready(function() {
- $.get("getencuesta.php?id=2", function(data) {
- $("#preguntas").html(data);
- $(function () {
-			$("#formulario").validate({
+
+
+		$("#formulario").validate({
 				rules: {
 					"nombre": "required",
 					"edad": "required",
-					"telefono":  { required: { depends: function(element) {  return $("#numero_secundario").val()==""; }}, minlength: 6, maxlength:8, digits: true},
-					"ptelefono":  {required:{ depends: function(element) {  return $("#numero_secundario").val()==""; }},digits: true,minlength: 2, maxlength:4},
-					"ptelefono2":  {required: { depends: function(element) {  return $("#telefono").val()==""; }}, minlength: 2,maxlength: 4, digits: true},
-					"telefono2":  {required: { depends: function(element) {  return $("#telefono").val()==""; }}, minlength: 6, maxlength: 8,digits: true},
-					"email":  {  required: true,    email: true   },
-					"preguntas[5]":  {  required: true  },
-					"preguntas[6]":  {  required: true  },
-					"preguntas[7]":  {  required: true  }
+					"telefono":  { required: { depends: function(element) {  return $("#numero_secundario").val()==""; }}, minlength: 6, maxlength: 8,digits: true},
+					"ptel":  {required:{ depends: function(element) {  return $("#numero_secundario").val()==""; }},digits: true,minlength: 2,maxlength:4},
+					"pcelular":  {required: { depends: function(element) {  return $("#telefono").val()==""; }}, minlength: 2,maxlength:4,digits: true},
+					"celular":  {required: { depends: function(element) {  return $("#telefono").val()==""; }}, minlength: 6,maxlength:8,digits: true},
+
+
+
 				},
 				messages: {
-				  "preguntas[5]":  "",
-					"preguntas[6]":  "",
-					"preguntas[7]":  "",
+
 					"nombre": "El nombre es obligatorio",
 					"email": "El Email es obligatorio",
 					"edad": "la edad es obligatoria",
-					"telefono": "Verificar cantidad de digitos ingresados",
-					"telefono2": "Verificar cantidad de digitos ingresados",
-					"ptelefono":  "El codigo de area debe tener entre 2 y 4 digitos",
-					"ptelefono2":  "El codigo de area debe tener entre 2 y 4 digitos"
+					"telefono": "Verificar la cantidad de números ingresados",
+					"celular": "Verificar la cantidad de números ingresados",
+					"ptel":  "El código de area debe tener entre 2 y 4 digitos",
+					"pcelular":  "El código de area debe tener entre 2 y 4 digitos"
 
 				},
 
 				submitHandler: function(form) {
 					$("#boton").attr("disabled", "disabled");
-					$.post("guardarencuesta.php", $("#formulario").serialize(),
+					$.post("guardarnuevaley.php", $("#formulario").serialize(),
 					function() {
-						 window.location.href = 'https://donar.proyectopuravida.org.ar/graciasencuesta.html';
+						 window.location.href = 'https://donar.proyectopuravida.org.ar/graciasnuevaley.html';
 
 
 					});
@@ -96,10 +84,6 @@ input.error {    border: red 1px solid;}
 					}
 				}
 			});
-		});	});
-
-
-
 		});
 
 		function getUrlVars()
@@ -125,6 +109,7 @@ input.error {    border: red 1px solid;}
 		}
 
 
+
 	</script>
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -132,8 +117,6 @@ input.error {    border: red 1px solid;}
     <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
 
     <!-- Site Core CSS -->
-    <link href="css/styledia.css" rel="stylesheet">
-	<!-- Site Core CSS -->
     <link href="css/style.css" rel="stylesheet">
 
     <!-- Font Family Raleway -->
@@ -168,6 +151,7 @@ input.error {    border: red 1px solid;}
                     <li>
                         <div class="top-gradient "></div>
                         www.proyectopuravida.org.ar
+                        <span>0810.345.8422</span>
                     </li>
                 </ul>
             </div>
@@ -178,50 +162,51 @@ input.error {    border: red 1px solid;}
 
     <!-- Page Content -->
 
-    <div class="row">
-    <div class="col-lg-12 text-center">
-       <a href="http://www.proyectopuravida.org.ar">
-             <img src="images/logogracias.jpg" alt=""></a>
-        </div>
-  </div>
 
     <div class="container">
       <div class="row">
           <div class="col-sm-12 text-center">
-              <h1 class="logo"></h1>
-              <h2 class="site-description"><span class="extra">Los sueños son para CUMPLIRLOS</span></h2>
-          </div>
+              <h1 class="logo"><a href="http://www.proyectopuravida.org.ar" title="Proyecto Pura Vida">Proyecto Pura Vida</a></h1>
+              <h2 class="site-description"><span class="extra"><br>#ConcienciaSolidaria<br>
+
+                <br>Buscamos una ley que otorgue beneficios impositivos a quienes ayuden económicamente a ONGs. <br><strong> Instalemos el tema en la agenda nacional! </strong><br> </h2></span>
         </div>
-           <!-- /.row -->
-
-         <div class="row">
-        <div class="col-sm-12">
-        <p class="text-center">
-                    La causa que te moviliza puede convertirse en nuestra próxima misión! Decidamos juntos en dónde vamos a poner nuestros esfuerzos para dar soluciones permanentes a problemas profundos. Tu opinión es importante y queremos escucharte. <br><strong> Ayudanos completando esta breve encuesta!</strong> <br>
-
-
-
-
-        </p>
-          <br>
         </div>
-      </div>
-    </div>
-    <!-- /.container -->
+        <!-- /.row -->
+        </div>
 
-    <header class="encuesta-header">
+     <!-- /.container -->
+
+      <header class="nuevaley-header">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-
+                    <h1 class="tagline">
+                    <span class="mobile"> <br> Necesitamos un marco legal que acompañe el quehacer diario de las causas que abordan las ONG´s. Sigamos el ejemplo de otros países como España, Suiza, Japón o Alemania. <br>
+                    <br>FIRMA AHORA!.</span><br>
                 </div>
             </div>
         </div>
     </header>
+<div class="title-mobile steps1">
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+              <span>Ingresa tus Datos</span>
+            </div>
+        </div>
+      </div>
+    </div>
 
-
-
-
+    <div class="title-mobile arrow steps2">
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+              <span>Ingresa los datos para la donación</span>
+            </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Page Content -->
     <div class="container">
@@ -229,75 +214,58 @@ input.error {    border: red 1px solid;}
         <div class="row">
 
             <div class="col-sm-12">
-              <form class="form-horizontal remeras-form" role="form" action="dar.php?desde=Undiaparadar" method="post" id="formulario">
-                <div class="step_1">
-                 <div class="form-group">
-                    <div class="col-sm-6">
-
-
-<form id="formulario" method="post">
-<div class="form-group hidden-xs"><div class="col-sm-12"><div class="section-form gray">Encuesta:</div></div></div>
-
-<div id="preguntas">
-
-</div>
-
-<br><br>
-   <div class="container">
-
-        <div class="row">
-
-            <div class="col-sm-6">
-              <form class="form-horizontal remeras-form" role="form" action="dar.php?desde=Undiaparadar" method="post" id="formulario">
+              <form class="form-horizontal remeras-form" method="post" id="formulario">
                 <div class="step_1">
                 <div class="form-group hidden-xs"><div class="col-sm-12"><div class="section-form gray">Tus Datos:</div></div></div>
                 <div class="form-group">
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
-              <input type="hidden" id="artista" name="artista"/>
-                <input type="hidden" id="desde" name="desde" value="Undiaparadar"/>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="*Nombre">
+						  <input type="hidden" id="artista" name="artista"/>
+								<input type="hidden" id="desde" name="desde" value="Medas"/>
                     </div>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="edad" name="edad" placeholder="edad">
+                        <input type="text" class="form-control" id="apellido" name="apellido" placeholder="*Apellido" "*Este campo es obligatorio">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="*Email">
                     </div>
                    </div>
-                <div class="form-group">
-				  <div class="col-sm-6">
-                      <p><span class="codarea">0</span><input onkeypress="return justNumbers(event);" style="width:23%; float:left;" class="form-control" type="tel" placeholder="Ej. 11" id="pcelular" name="ptelefono2">
-                      <span class="quince">15</span><input onkeypress="return justNumbers(event);" style="width:65%; float:left;" class="form-control" type="tel" placeholder="Num. Celular*" id="numero_secundario" name="telefono2"></p>
+                     <div class="col-sm-6">
+                      <p><span class="codarea">0</span><input onkeypress="return justNumbers(event);" style="width:23%; float:left;" class="form-control" type="tel" placeholder="Ej. 11" id="pcelular" name="pcelular">
+                      <span class="quince">15</span><input onkeypress="return justNumbers(event);" style="width:65%; float:left;" class="form-control" type="tel" placeholder="Num. Celular*" id="numero_secundario" name="celular"></p>
                     </div>
 
                      <div class="col-sm-6">
-                      <p><span class="codarea">0</span><input onkeypress="return justNumbers(event);" style="width:23%; float:left;" class="form-control" type="tel" placeholder="Ej. 11" id="ptelefono" name="ptelefono">
+                      <p><span class="codarea">0</span><input onkeypress="return justNumbers(event);" style="width:23%; float:left;" class="form-control" type="tel" placeholder="Ej. 11" id="ptel" name="ptel">
                      <input onkeypress="return justNumbers(event);" style="width:70%; float:right;" class="form-control" type="tel" placeholder="Teléfono Fijo*" id="telefono" name="telefono"></p>
                     </div>
 
-                </div>
-				 <div class="regla">
+                    <div class="regla">
                     <div class="col-sm-12">
                        Ingresar el código de area sin 0 ni 15
                      </div>
                      </div>
-                </div>
-
-            <div align="center">
 
 
+                 <div class="regla">
+                    <div class="col-sm-12">
+                       *(Campos obligatorios)
+                    </div>
+                 <div class="form-group">
+                        <div class="col-sm-12">
+                          <button class="btn btn-default pull-right hidden-xs">FIRMAR</button>
+                        </div>
 
-
-                    <input type="submit" value="Enviar Formulario "  id="boton" onclick="javascript:document.getElementById('boton').style.visibility = 'hidden';">
-
-
-
- </div>
-
-</form>
- </div>
+                      </div>
+                      <div class="form-group visible-xs">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <button class="btn btn-default donar">FIRMAR</button>
+                          </div>
+                        </div>
+                      </div>
                       <div class="form-group visible-xs copyright text-center">
                           <div class="col-sm-12">
                             <p class="bold">www.proyectopuravida.org.ar<br>Todos los derechos reservados</p>
@@ -306,13 +274,15 @@ input.error {    border: red 1px solid;}
                       </div>
                     </div>
                   </div>
-                </div>
-              </form>
+
+
               <aside class="visible-lg">
                 <div class="col-sm-12">
                   <img alt="" src="images/digicert.png" />
                   <p>Esta página contiene un formulario seguro
                   <br><br>La información suministrada se transmite de forma encriptada a través de Internet, y sólo nosotros podremos acceder a ella.</p>
+
+
 
               </aside>
             </div>
@@ -323,20 +293,21 @@ input.error {    border: red 1px solid;}
           <div class="row">
             <div class="col-sm-12">
               <ul>
-                <li><a href="http://www.proyectopuravida.org.ar" title="Proyecto Pura Vida">www.proyectopuravida.org.ar | </li>
+                <li><a href="http://www.proyectopuravida.org.ar/" title="Proyecto Pura Vida">www.proyectopuravida.org.ar</a> | </li>
                 <li>Todos los derechos reservados | </li>
-                <li>Contáctenos en <a href="mailto:contacto@proyectopuravida.org">contacto@proyectopuravida.org</a></li>
+                <br><li>Contáctenos en <a href="mailto:contacto@proyectopuravida.org">contacto@proyectopuravida.org</a></li>
               </ul>
             </div>
             <div class="gradient"></div>
             <div class="col-sm-12 text-center">
               <img alt="" src="images/data-fiscal.jpg" />
             </div>
-          </div>
+            </div>
              <div>  <p>"El titular de los datos personales tiene la facultad de ejercer el derecho de acceso a los mismos en forma gratuita a intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo al efecto conforme lo establecido en el artículo 14, inciso 3 de la Ley Nº 25.326".
 
                    <p> "La DIRECCION NACIONAL DE PROTECCION DE DATOS PERSONALES, Órgano de Control de la Ley Nº 25.326, tiene la atribución de atender las denuncias y reclamos que se interpongan con relación al incumplimiento de las normas sobre protección de datos personales”.</span>
 
+                </div>
                 </div>
           <!-- /.row -->
         </footer>
@@ -345,7 +316,12 @@ input.error {    border: red 1px solid;}
     </div>
     <!-- /.container -->
 
-
+    <!-- Bootstrap JavaScript -->
+    <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    </script>
 
 </body>
 
