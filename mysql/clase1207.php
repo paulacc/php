@@ -1,5 +1,5 @@
 <?php
-   public $rating:
+ public $rating:
 
    public function_construct($Tituloinicial){
      require_once 'conexion.php';

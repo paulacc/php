@@ -1,7 +1,7 @@
 <?php
 	$ruta = 'mysql:host=localhost; dbname=movies_db';
 	$usuario = 'root';
-	$password = '';
+	$password = 'iorana';
 	$opciones = [ PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ];
 
 	try {
