@@ -1,4 +1,23 @@
-<?php  ?>
+<?php
+
+$name = '';
+$email = '';
+$errores = [];
+
+
+if($_POST){
+
+  $name = trim($_POST['name']);
+  $email = trim($_POST['email']);
+
+  header('location: perfil.php');
+  
+
+
+}
+
+
+ ?>
 
 <!DOCTYPE html>
 <html>
@@ -22,7 +41,7 @@
                             <h3 class="mb-0">Registro</h3>
                         </div>
                         <div class="card-body">
-                            <form class="form">
+                            <form  method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="uname1">Nombre</label>
                                     <input type="text" class="form-control form-control-lg rounded-0" name="name"  required="">
@@ -30,17 +49,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" class="form-control form-control-lg rounded-0" name="email" required="" autocomplete="new-password">
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="email" required="" >
 
                                 </div>
                                 <div class="form-group">
                                     <label>Constraseña</label>
-                                    <input type="password" class="form-control form-control-lg rounded-0" name="pwd" required="" autocomplete="newpassword">
+                                    <input type="password" class="form-control form-control-lg rounded-0" name="pwd" required="" >
 
                                 </div>
                                 <div class="form-group">
                                     <label>Repetir Constraseña</label>
-                                    <input type="password" class="form-control form-control-lg rounded-0" name="rpwd" required="" autocomplete="new-password">
+                                    <input type="password" class="form-control form-control-lg rounded-0" name="rpwd" required="" >
 
                                 </div>
 
