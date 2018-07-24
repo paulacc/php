@@ -1,6 +1,6 @@
 <?php
 
-  class pelicula {
+  class Pelicula {
     private $Id;
 
     public $titulo;
@@ -21,7 +21,7 @@
       $this->Id=$datosPelicula[0]['id'];
       $this->titulo=$TituloInicial;
       $this->rating=$datosPelicula[0]['rating'];
-      $this->actores=$ActoresInicial; 
+      $this->actores=$ActoresInicial;
     }
 
     public function getId() {

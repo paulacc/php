@@ -40,19 +40,19 @@
         }
 
 
-        public function GuardarUsuario(){
+        public function Registrar(){
 
          try {
            $sql = "INSERT INTO `users` 	(`id`,`name`, `email`, `pwd`)";
            $query = $db->prepare($sql);
            $query->execute();
-           $datosusuario = $query->fetchAll(PDO::FETCH_ASSOC);
+           //$datosusuario = $query->fetchAll(PDO::FETCH_ASSOC);
          }
          catch( PDOException $Exception ) {
          }
 
 
- }
+       }
 
 
  }

@@ -2,6 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+require_once 'Pelicula.php';
 
 class Peliculas {
   public static function TraerPeliculas() {
@@ -12,8 +13,14 @@ class Peliculas {
     $ConsultaSql= $db->prepare($Busqueda);
     $ConsultaSql->execute();
     $Resultado = $ConsultaSql->fetchAll(PDO::FETCH_ASSOC);
+    $TodasLasPeliculas =[];
 
-    return  $Resultado;
+    foreach ($Resultado as $value) {
+      $pelicula = new Pelicula($value["title"],$value["awards"])
+      $TodasLasPeliculas[] = $pelicula;
+    }
+
+    return  $TodasLasPeliculas;
   }
 }
 
@@ -21,6 +28,7 @@ class Peliculas {
   $pelis = Peliculas::TraerPeliculas();
   var_dump($pelis);
   exit;
+
 
 
  ?>

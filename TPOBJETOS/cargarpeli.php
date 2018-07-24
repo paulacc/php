@@ -1,14 +1,21 @@
 <?php
 
-$name = '';
-$email = '';
+$title = '';
+//$genre = '';
+$awards = '';
+$rating = '';
+
+
 $errores = [];
 
 
 if($_POST){
 
-  $name = trim($_POST['name']);
-  $email = trim($_POST['email']);
+  $title = trim($_POST['title']);
+  //$genre = trim($_POST['genre_id']);
+  $awards = trim($_POST['awards']);
+  $rating = trim($_POST['rating']);
+
 
   header('location: logueo.php');
 
@@ -38,32 +45,32 @@ if($_POST){
                     <!-- form card login -->
                     <div class="card rounded-0">
                         <div class="card-header">
-                            <h3 class="mb-0">Registro</h3>
+                            <h3 class="mb-0">Registro Pelicula</h3>
                         </div>
                         <div class="card-body">
                             <form  method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="uname1">Nombre</label>
-                                    <input type="text" class="form-control form-control-lg rounded-0" name="name"  required="">
+                                    <label for="uname1">Titulo</label>
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="title"  required="">
 
                                 </div>
                                 <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="text" class="form-control form-control-lg rounded-0" name="email" required="" >
+                                    <label>Genero</label>
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="genre_id" required="" >
 
                                 </div>
                                 <div class="form-group">
-                                    <label>Constraseña</label>
-                                    <input type="password" class="form-control form-control-lg rounded-0" name="pwd" required="" >
+                                    <label>Premios</label>
+                                    <input type="number" class="form-control form-control-lg rounded-0" name="awards" required="" >
 
                                 </div>
                                 <div class="form-group">
-                                    <label>Repetir Constraseña</label>
-                                    <input type="password" class="form-control form-control-lg rounded-0" name="rpwd" required="" >
+                                    <label>Rating</label>
+                                    <input type="number" class="form-control form-control-lg rounded-0" name="rating" required="" >
 
                                 </div>
 
-                                <button type="submit" class="btn btn-primary boton float-right ">Registrar</button>
+                                <button type="submit" class="btn btn-primary boton float-right ">Guardar</button>
                             </form>
                         </div>
                         <!--/card-block-->
