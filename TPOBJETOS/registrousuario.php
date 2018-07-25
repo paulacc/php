@@ -1,21 +1,26 @@
 <?php
 
-$name = '';
-$email = '';
-$errores = [];
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require 'usuario.php';
+
+$nuevoUsuario = new Usuario("","","");
+$errors=[];
 
 
 if($_POST){
 
-  $name = trim($_POST['name']);
-  $email = trim($_POST['email']);
+  $nuevoUsuario = new Usuario($_POST['name'],$_POST['email'],$_POST['pwd']);
+//$confirmPassword=trim($_POST['password_confirmation']);
+  //$errors = $newUser->validar($confirmPassword);
 
-  header('location: logueo.php');
-
-
-
-}
-
+  //if (empty($errors)) {
+    $nuevoUsuario->GuardarUsuario();
+    header('location: logueo.php');
+    exit;
+ }
+//}
 
  ?>
 
@@ -44,17 +49,17 @@ if($_POST){
                             <form  method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="uname1">Nombre</label>
-                                    <input type="text" class="form-control form-control-lg rounded-0" name="name"  required="">
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="name"  value="<?=$nuevoUsuario->getName()?>">
 
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" class="form-control form-control-lg rounded-0" name="email" required="" >
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="email" value="<?=$nuevoUsuario->getEmail()?>" >
 
                                 </div>
                                 <div class="form-group">
                                     <label>Constraseña</label>
-                                    <input type="password" class="form-control form-control-lg rounded-0" name="pwd" required="" >
+                                    <input type="password" class="form-control form-control-lg rounded-0" name="pwd" value= "<?=$nuevoUsuario->getPwd()?>">
 
                                 </div>
                                 <div class="form-group">
