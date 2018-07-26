@@ -40,6 +40,35 @@ require_once 'conexion.php';
 
 
 
+        public function Validar()
+        {
+
+          $errores = [] ;
+
+          if(empty($this->name)){
+              $errores[] = "El campo nombre es obligatorio";
+           }elseif (!ctype_alpha($this->name)) {
+              $errores[] = "El campo nombre solo debe contener letras";
+           }
+           if($this->email == ''){
+            $errores[]= "El campo email es obligatorio";
+
+          }elseif(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+             $errores[] = 'El correo no es válido" ';
+          }
+
+          if(empty($this->email) ){
+            $errores['pwd'] = "Debes ingresar una contraseña ";
+         }elseif ((strlen($pwd) < 5 )) {
+            $errores['pwd'] = "La contraseña debe tener más de 5 caracteres ";
+         }
+         if($pwd!= $rpwd){
+           $errores['rpwd']= "las contraseñas deben coincidir ";
+         }
+        }
+
+
+
 
         public function GuardarUsuario()
         {
