@@ -42,49 +42,49 @@ ini_set('display_errors', 1);
 
 
           public function Validar($rpwd)
-                {
-                  $errores = [] ;
+                  {
+                    $errores = [] ;
 
-                  if(empty($this->name)){
-                      $errores[] = "El campo nombre es obligatorio";
-                   }elseif (!ctype_alpha($this->name)){
-                      $errores[] = "El campo nombre solo debe contener letras";
-                   }
-                   if($this->email == ''){
-                    $errores[]= "El campo email es obligatorio";
-                  }elseif(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-                     $errores[] = 'El correo no es válido" ';
+                    if(empty($this->name)){
+                        $errores[] = "El campo nombre es obligatorio";
+                     }elseif (!ctype_alpha($this->name)){
+                        $errores[] = "El campo nombre solo debe contener letras";
+                     }
+                     if($this->email == ''){
+                      $errores[]= "El campo email es obligatorio";
+                    }elseif(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+                       $errores[] = 'El correo no es válido" ';
+                    }
+                    if(empty($this->email)){
+                      $errores[] = "Debes ingresar una contraseña ";
+                   }elseif ((strlen($this->pwd) < 3 )) {
+                    $errores[] = "La contraseña debe tener más de 3 caracteres ";
+                  }elseif($this->ValidarEmail()){
+                    $errores[] = "El mail ya se encuentra registrado";
                   }
-                  if(empty($this->email)){
-                    $errores[] = "Debes ingresar una contraseña ";
-                 }elseif ((strlen($this->pwd) < 5 )) {
-                  $errores[] = "La contraseña debe tener más de 5 caracteres ";
-                 }
-                 if($this->pwd != $rpwd){
-                   $errores[]= "las contraseñas deben coincidir ";
-                 }
-                   return $errores;
-                }
+                   if($this->pwd != $rpwd){
+                     $errores[]= "las contraseñas deben coincidir ";
+                   }
+                     return $errores;
+                  }
 
 
 
-        //public function ValidarEmail($email){
-          //include 'conexion.php';
-
-           //$sql = $cadenaDeBusqueda = "SELECT id,name,email,password FROM users WHERE email = :email";
-          // $consultaAlaBase = $db->prepare($cadenaDeBusqueda);
-          //$consultaAlaBase->bindParam(":email",$email,PDO::PARAM_INT);
-          //$consultaAlaBase->execute(); (editado)
-
-  //         $Resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-    //       if ($Resultado) {
-      //       return $Resultado;
-        //   }
-          // return false;
+           public function ValidarEmail(){
+           include 'conexion.php';
 
 
-       //	}
+           $consulta = "select count(*) from movies_db.users where email = '{$this->email}'";
+           $resultado = $db->query($consulta);
+           $existe = 0;
+           foreach ($resultado as $registro) {
+           $existe = $registro[0];
+           }
+           return $existe;
+
+
+
+         }
 
 
 
