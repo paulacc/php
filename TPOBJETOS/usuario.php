@@ -1,7 +1,8 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-require_once 'conexion.php';
+
+
 
 
  class Usuario
@@ -40,33 +41,49 @@ require_once 'conexion.php';
 
 
 
-        public function Validar()
-        {
+          public function Validar($rpwd)
+                {
+                  $errores = [] ;
 
-          $errores = [] ;
+                  if(empty($this->name)){
+                      $errores[] = "El campo nombre es obligatorio";
+                   }elseif (!ctype_alpha($this->name)){
+                      $errores[] = "El campo nombre solo debe contener letras";
+                   }
+                   if($this->email == ''){
+                    $errores[]= "El campo email es obligatorio";
+                  }elseif(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+                     $errores[] = 'El correo no es válido" ';
+                  }
+                  if(empty($this->email)){
+                    $errores[] = "Debes ingresar una contraseña ";
+                 }elseif ((strlen($pwd) < 5 )) {
+                  $errores[] = "La contraseña debe tener más de 5 caracteres ";
+                 }
+                 if($this->pwd != $rpwd){
+                   $errores[]= "las contraseñas deben coincidir ";
+                 }
+                }
 
-          if(empty($this->name)){
-              $errores[] = "El campo nombre es obligatorio";
-           }elseif (!ctype_alpha($this->name)) {
-              $errores[] = "El campo nombre solo debe contener letras";
-           }
-           if($this->email == ''){
-            $errores[]= "El campo email es obligatorio";
 
-          }elseif(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-             $errores[] = 'El correo no es válido" ';
-          }
 
-          if(empty($this->email) ){
-            $errores['pwd'] = "Debes ingresar una contraseña ";
-         }elseif ((strlen($pwd) < 5 )) {
-            $errores['pwd'] = "La contraseña debe tener más de 5 caracteres ";
-         }
-         if($pwd!= $rpwd){
-           $errores['rpwd']= "las contraseñas deben coincidir ";
-         }
-        }
+        //public function ValidarEmail($email){
+          //include 'conexion.php';
 
+           //$sql = $cadenaDeBusqueda = "SELECT id,name,email,password FROM users WHERE email = :email";
+          // $consultaAlaBase = $db->prepare($cadenaDeBusqueda);
+          //$consultaAlaBase->bindParam(":email",$email,PDO::PARAM_INT);
+          //$consultaAlaBase->execute(); (editado)
+
+  //         $Resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+    //       if ($Resultado) {
+      //       return $Resultado;
+        //   }
+          // return false;
+
+
+       //	}
 
 
 
@@ -78,14 +95,11 @@ require_once 'conexion.php';
            $sql = "INSERT INTO movies_db.users (name, email, password) VALUES ('{$this->name}','{$this->email}','{$phash}')";
            $query = $db->prepare($sql);
            $query->execute();
-
-
          }
          catch( PDOException $Exception ){
          }
-
-
        }
+
 
 
     }

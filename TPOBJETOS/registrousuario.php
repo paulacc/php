@@ -6,21 +6,22 @@ ini_set('display_errors', 1);
 require 'usuario.php';
 
 $nuevoUsuario = new Usuario("","","");
-$errors=[];
+$rpwd = "";
+$errores=[];
 
 
 if($_POST){
 
   $nuevoUsuario = new Usuario($_POST['name'],$_POST['email'],$_POST['pwd']);
-//$confirmPassword=trim($_POST['password_confirmation']);
-  //$errors = $newUser->validar($confirmPassword);
+  $rpwd=trim($_POST['rpwd']);
+  $errores = $nuevoUsuario->Validar($rpwd);
 
-  //if (empty($errors)) {
+  if (empty($errores)) {
     $nuevoUsuario->GuardarUsuario();
     header('location: logueo.php');
     exit;
  }
-//}
+}
 
  ?>
 
@@ -33,6 +34,17 @@ if($_POST){
     <title></title>
   </head>
   <body>
+    <?php if (!empty($errores)): ?>
+      <!-- Si no esta vacia errores -->
+      <div class="div-errores alert alert-danger">
+        <ul>
+          <?php foreach ($errores as $value): ?>
+          <li><?=$value?></li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+    <?php endif; ?>
+   <br>
     <div class="container py-5">
     <div class="row">
         <div class="col-md-12">
@@ -64,7 +76,7 @@ if($_POST){
                                 </div>
                                 <div class="form-group">
                                     <label>Repetir Constraseña</label>
-                                    <input type="password" class="form-control form-control-lg rounded-0" name="rpwd" required="" >
+                                    <input type="password" class="form-control form-control-lg rounded-0" name="rpwd" value="<?=$rpwd?>" >
 
                                 </div>
 
