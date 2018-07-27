@@ -57,12 +57,13 @@ ini_set('display_errors', 1);
                   }
                   if(empty($this->email)){
                     $errores[] = "Debes ingresar una contraseña ";
-                 }elseif ((strlen($pwd) < 5 )) {
+                 }elseif ((strlen($this->pwd) < 5 )) {
                   $errores[] = "La contraseña debe tener más de 5 caracteres ";
                  }
                  if($this->pwd != $rpwd){
                    $errores[]= "las contraseñas deben coincidir ";
                  }
+                   return $errores;
                 }
 
 
