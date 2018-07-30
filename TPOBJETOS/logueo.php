@@ -1,4 +1,9 @@
-<?php  ?>
+<?php
+
+
+
+
+ ?>
 
 <!DOCTYPE html>
 <html>
@@ -33,7 +38,7 @@
                                     <input type="password" class="form-control form-control-lg rounded-0" name="pwd" required="" autocomplete="new-password">
 
                                 </div>
-      
+
                                 <button type="submit" class="btn btn-primary boton float-right ">Iniciar Sesión</button>
                             </form>
                         </div>

@@ -81,9 +81,6 @@ ini_set('display_errors', 1);
            $existe = $registro[0];
            }
            return $existe;
-
-
-
          }
 
 
@@ -100,6 +97,11 @@ ini_set('display_errors', 1);
          catch( PDOException $Exception ){
          }
        }
+
+
+        public function ValidarPwd(){
+          $consulta =
+        }
 
 
 
