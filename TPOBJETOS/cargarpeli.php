@@ -1,5 +1,7 @@
 <?php
 
+require Pelicula.php;
+
 $title = '';
 //$genre = '';
 $awards = '';

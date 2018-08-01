@@ -1,30 +1,32 @@
 <?php
- require_once'conexion.php';
+ require_once 'genero.php';
+
+ class Generos
+ {
+    public static function TraerGeneros()
+    {
+     require 'conexion.php';
+
+     $Busqueda = "SELECT * FROM genres";
+     $ConsultaSql = $db->prepare($Busqueda);
+     $ConsultaSql->execute();
+     $Resultado = $ConsultaSql->fetchAll(PDO::FETCH_ASSOC);
+     $todosLosGeneros = [];
+
+     foreach ($Resultado as $value) {
+       $objGenero = new Genero ($value["id"],$value["name"]);
+       $todosLosGeneros [] = $objGenero;
+     }
+
+      return $todosLosGeneros;
+
+    }
 
 
-$query = $db->query('SELECT * FROM genres');
-$genres = $query->fetchAll(PDO::FETCH_ASSOC);
+ }
 
+
+   $generos = Generos :: TraerGeneros();
+   var_dump($generos);
 
  ?>
-
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-
-    <div>
-      <label >Genero</label>
-           <select name="genre_id" >
-        <option value="">Elegi Genero</option>
-          <?php foreach ($genres as $genre): ?>
-              <option value="<?=$genre['id']?>"><?=$genre['name']?></option>
-            <?php endforeach; ?>
-        </select>
-   </div>
-
-  </body>
-</html>

@@ -12,14 +12,15 @@ ini_set('display_errors', 1);
     private $name;
     private $email;
     private $pwd;
+    private $role;
 
-
-    function __construct($name,$email,$pwd,$id=null)
+    function __construct($name,$email,$pwd,$role=1,$id=null)
     {
       $this->id = trim($id);
       $this->name = trim($name);
       $this->email = trim($email);
       $this->pwd = trim($pwd);
+      $this->role = trim($role);
 
     }
 
@@ -39,6 +40,9 @@ ini_set('display_errors', 1);
             return $this->pwd;
           }
 
+          public function getRole(){
+            return $this->role;
+          }
 
 
           public function Validar($rpwd)
@@ -90,7 +94,7 @@ ini_set('display_errors', 1);
           include 'conexion.php';
          try {
            $phash = password_hash(trim($this->pwd),PASSWORD_DEFAULT);
-           $sql = "INSERT INTO movies_db.users (name, email, password) VALUES ('{$this->name}','{$this->email}','{$phash}')";
+           $sql = "INSERT INTO movies_db.users (name, email, password,role) VALUES ('{$this->name}','{$this->email}','{$phash}','1')";
            $query = $db->prepare($sql);
            $query->execute();
          }
@@ -100,8 +104,10 @@ ini_set('display_errors', 1);
 
 
         public function ValidarPwd(){
-          $consulta =
+          $consulta = '';
         }
+
+
 
 
 

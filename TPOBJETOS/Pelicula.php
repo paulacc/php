@@ -40,6 +40,7 @@
            $this->genreId = $genreId;
          }
 
+
          // Other methods
          public function Guardar(){
 
@@ -60,6 +61,7 @@
 
 
       }
+
 
 
 
