@@ -1,7 +1,35 @@
 <?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
  require_once 'usuario.php';
+ require_once 'funciones.php';
 
 
+ $logueoUsuario = new Usuario ("","","","","");
+ $errores = [];
+
+
+if($_POST){
+   $logueoUsuario = new Usuario ('',trim($_POST['email']),trim($_POST['pwd'],'',''));
+   $errores = $logueoUsuario->validarLogueo();
+
+   if(empty($errores)){
+
+     logInUser($logueoUsuario);
+     if (isset($_POST["recordar"])) {
+        setcookie('email', $logueoUsuario->getEmail(), time() + 3600 * 24 * 30);
+        }
+       header('location: index.php');
+       exit;
+   }
+
+
+
+
+}
 
 
 
@@ -17,7 +45,16 @@
     <title></title>
   </head>
   <body>
-    <body >
+    <?php if($errores) : ?>
+
+      <div class="div-errores alert alert-danger">
+        <ul>
+          <?php foreach ($errores as $value): ?>
+          <li><?=$value?></li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+    <?php endif; ?>
     <div class="container py-5">
     <div class="row">
         <div class="col-md-12">
@@ -34,16 +71,15 @@
                             <form class="form">
                                 <div class="form-group">
                                     <label for="uname1">Email</label>
-                                    <input type="email" class="form-control form-control-lg rounded-0" name="name" required="">
+                                    <input type="email" class="form-control form-control-lg rounded-0" name="email" value="<?=$logueoUsuario->getEmail()?>">
 
                                 </div>
                                 <div class="form-group">
                                     <label>Contraseña</label>
-                                    <input type="password" class="form-control form-control-lg rounded-0" name="pwd" required="" autocomplete="new-password">
-
+                                    <input type="password" class="form-control form-control-lg rounded-0" name="pwd" value="<?=$logueoUsuario->getPwd()?>"  >
                                 </div>
-
-                                <button type="submit" class="btn btn-primary boton float-right ">Iniciar Sesión</button>
+                              </br>
+                                <button type="submit" class="btn btn-primary boton float-right"> Iniciar Sesión </button>
                             </form>
                         </div>
                         <!--/card-block-->

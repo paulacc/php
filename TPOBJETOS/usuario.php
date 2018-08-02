@@ -24,29 +24,10 @@ ini_set('display_errors', 1);
 
     }
 
-         public function getId() {
-           return $this->id;
-          }
-
-          public function getName(){
-            return $this->name;
-          }
-
-          public function getEmail(){
-            return $this->email;
-          }
-
-          public function getPwd(){
-            return $this->pwd;
-          }
-
-          public function getRole(){
-            return $this->role;
-          }
 
 
           public function Validar($rpwd)
-                  {
+                {
                     $errores = [] ;
 
                     if(empty($this->name)){
@@ -89,22 +70,73 @@ ini_set('display_errors', 1);
 
 
 
-        public function GuardarUsuario()
-        {
-          include 'conexion.php';
-         try {
-           $phash = password_hash(trim($this->pwd),PASSWORD_DEFAULT);
-           $sql = "INSERT INTO movies_db.users (name, email, password,role) VALUES ('{$this->name}','{$this->email}','{$phash}','1')";
-           $query = $db->prepare($sql);
-           $query->execute();
+          public function GuardarUsuario()
+          {
+            include 'conexion.php';
+           try {
+             $phash = password_hash(trim($this->pwd),PASSWORD_DEFAULT);
+             $sql = "INSERT INTO movies_db.users (name, email, password,role) VALUES ('{$this->name}','{$this->email}','{$phash}','1')";
+             $query = $db->prepare($sql);
+             $query->execute();
+           }
+           catch( PDOException $Exception ){
+           }
          }
-         catch( PDOException $Exception ){
+
+
+
+
+         public function  validarLogueo(){
+            $errores = [];
+
+            if(!$this->ValidarEmail()){
+               $errores [] = 'Verificar email ingresado';
+            }elseif(!$this->validarPassword()){
+             $errores[] = 'La contraseña es incorrecta';
+
+            }
+             return $errores;
+
          }
+
+       private function validarPassword(){
+         include("conexion.php");
+        $busqueda = "SELECT * FROM movies_db.users WHERE email = {$this->email}";
+        $consultaSql = $db->prepare($busqueda);
+        $consultaSql->execute();
+        $resultado = $consultaSql->fetch(PDO::FETCH_ASSOC);
+
+         if(count($resultado)==1)
+         {
+           foreach ($resultado as $registro) {
+            if(password_verify($this->password,$registro['password'])){
+              return true;
+            }
+         }
+        return false;
        }
 
 
-        public function ValidarPwd(){
-          $consulta = '';
+       }
+
+       public function getId() {
+         return $this->id;
+        }
+
+        public function getName(){
+          return $this->name;
+        }
+
+        public function getEmail(){
+          return $this->email;
+        }
+
+        public function getPwd(){
+          return $this->pwd;
+        }
+
+        public function getRole(){
+          return $this->role;
         }
 
 
