@@ -22,7 +22,7 @@ if($_POST){
      if (isset($_POST["recordar"])) {
         setcookie('email', $logueoUsuario->getEmail(), time() + 3600 * 24 * 30);
         }
-       header('location: index.php');
+       header('location: indexp.php');
        exit;
    }
 
