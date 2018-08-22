@@ -1,0 +1,12 @@
+Cada tabla es una clase
+como usar modelo de tabla
+que puede devolver o 
+-registro (find)
+-lista de registro (all)
+-objeto de consulta (where) kerybirlad
+
+Eloquent procesar modelos es un ORM  
+
+blade procesar vista
+
+tener en cuenta el uso de get 
